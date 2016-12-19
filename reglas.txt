@@ -1,21 +1,47 @@
 ------------------------------------------27/01/2014--------------------------------------------
-
-el metodo adormecer ejecuta el codigo dependiendo del tipo de objeto al que apunta su argumento
+/**********************************************************************************************/
+/*******************************	General		***************************************/
+/**********************************************************************************************/
+el metodo adormecer ejecuta el codigo dependiendo del tipo de objeto al que apunta su referencia
 un metodo abstracto no tiene implementacion y  un metodo abstracto debe estar en una clase abstracta
 las clases abstractas no se instancian(ERROR DE COMPILACION)
 la clase que herede de una clase abstracta es obligatorio sobreescribir los metodos abstractos
 una INTERFACE tiene solo metodos abstractos
 Al implementar una INTERFACE en una clase todos sus metodos deben ser obligatoriamente implementados 
 Si la clase no implementa todos los metodos de una INTERFACE la clase deber ser declarada como abstracta
-Los metodos no implemtados de una INTERFACE permancen como abstractas en la clase que implemento la INTERFACE
+Los metodos no implemtados de una INTERFACE permancen como abstract en la clase que implemento la INTERFACE (cuando la clase fue declarada como abstract para no implementar todos los metodos)
 Una clase java si puede implementar varias INTERFACES
-Una INTERFACE no puede implementar otra INTERFACES
+Una INTERFACE no puede implementar otra INTERFACES(no tendria sentido querer implementar metodos puesto que en una interface todos los metodos son abstract)
 Una INTERFACE puede heredar de otra u otras INTERFACES
-Una clase puede herederar de otra clase e implementar una o varias INTERFACES al mismo tiempo
+Los métodos de las Interface no pueden ser “static”.
+Las interfaces NO PUEDEN EXTENDER UNA CLASE
+Una clase puede herederar de otra clase e implementar una o varias INTERFACES al mismo tiempo(en ese orden de declaracion)
 No existe herencia multiple a nivel de clases pero si en INTERFACES
+El único modificador que se puede aplicar a las variables locales es final.
 un metodo abstracto no puede tener implementacion
-THROWABLE de papa de --- >> EXCEPTION, ERROR
-Si hay como heredar de THROWABLE \
+THROWABLE el papa de --- >> EXCEPTION, ERROR
+Si hay como heredar de THROWABLE
+Cuando un método de una subclase sobrescribe a un método de una superclase, se puede acceder al constructor sin argumentos de la
+superclase desde la subclase, si se antepone al nombre del método de la subclase la palabra clave super y un separador punto (.)
+Las clases abstractas son demasiado generales como para crear objetos reales; sólo especifican lo que tienen en común las subclases
+Los constructores y los métodos static no pueden declararse como abstract
+Los métodos que se declaran como private son implícitamente final
+Los métodos que se declaran como static son implícitamente final
+Todos los métodos en una clase final son implícitamente final
+Todos los métodos que se declaran en una interface son public abstract de manera implícita, y todos los campos son implícitamente public, static y final.
+Una clase que no implementa a todos los métodos de la interfaz es una clase abstracta, y debe declararse como abstract.
+Un objeto de una clase que implemente a una interfaz puede considerarse como un objeto del tipo de la interfaz
+Los objetos de cualquier subclase de la clase que implementa a la interfaz también pueden considerarse como objetos del tipo de la interfaz
+La interfaz Comparable se utiliza para permitir que los objetos de una clase que implementa a la interfaz se comparen entre sí.
+Todos los métodos de la clase Object pueden llamarse mediante el uso de una referencia de un tipo de interfaz. 
+Una referencia se refiere a un objeto, y todos los objetos heredan los métodos de la clase Object.
+El modificador synchronized puede ser aplicado solo a métodos y a bloques de código.
+El modificador native solo se puede aplicar a los métodos.
+El modificador strictfp solo se puede aplicar a las clases y métodos.
+Las variables de instancia no pueden ser abstract, synchronized, native, o strictfp
+El modificador transient es aplicable solo a las variables de instancia.
+El modificador volatile es aplicable solo a las variables de instancia.
+Es legal declarar una variable local con el mismo nombre que una variable de instancia, esto se llama “Shadowing”.
 
 ------------------------------------------28/01/2014--------------------------------------------
 MODIFICADOTRES
@@ -35,7 +61,7 @@ Si se lanza en el codigo una Excepcion del tipo CHECKED tambien hay que propagar
 solo las hijas de RUNTIME EXCEPTION son UNCHECKED
 EXCEPTION es CHECKED
 SI existen varios bloques catch deben declarse primero los hijos luego los padres
-En comp�lacion las Excepciones UNCHECKED no se analiza
+En compílacion las Excepciones UNCHECKED no se analiza
 Si se lanza una Excepcion y alguno de los bloques catch lo atrapa ya no entrara en ninguno de los bloques catch restantes
 Si quiero crear Excepciones tengo que heredar de algun tipo de Excepcion 
 En herencia, si los metodos de clases hijas propagan Execpciones CHECKED verifico que las Excepciones del padre propagen la misma excepcion o una de mayor jerarquia
@@ -46,12 +72,17 @@ En herencia, si la clase hijo no lanza ninguna o propaga una excepcion UNCHECKED
 CONSTRUCTORES
 
 El constructor si no tiene modificador por defecto es default
-En herencia en el constrcutor por defecto de la clase hija tambien llama a super osea al  constructor por defecto del padre
+En herencia en el constructor predeterminado de la clase hija tambien llama a super (explicita con super() o implicitamente si no se incluye super()) osea al  constructor predeterminado sin argumentos del padre
 con super llama al constructor por defecto del padre
 con this en un constructor llama a otro constructor de esa clase
 En un constructor la primera linea ejecutable debe ir this(""); o super();
-Si en un constructor estan en las dos primeras lineas this(""); y super(); no comp�la
+Si en un constructor estan en las dos primeras lineas this(""); y super(); no compíla
+La primera tarea del constructor de cualquier subclase es llamar al constructor de su superclase directa, ya sea en forma explícita o implícita (si no se especifica una llamada al constructor),
+para asegurar que las variables de instancia heredadas de la superclase se inicialicen en forma apropiada.
 En una clase los bloques de inicializacion se ejecuta antes que los constructores
+
+OPERADORES
+Si uno de los argumentos del operador + es String el otro argumento se convierte en objeto String.
 
 OPERADORES LOGICOS:
 || &&: valida solo el primer operando para el resultado, el segundo ya no lo toma en cuenta
@@ -61,7 +92,7 @@ a++ postincremento la variable aumenta un valor a la siguiente vez que es utiliz
 
 
 los metodos estaticos estan en la clase y ya no en los objetos
-por lo tano lo invoco metodos directamente desde la clase, sin NEW
+por lo tano invoco metodos estaticos directamente desde la clase, sin NEW
 Desde un metodo estatico no se puede usar atributos o metodos no estaticos-->> error de compilacion
 Resuelvo esto con una referencia a un objeto especifico, llamando a los atributos o metodos no estaticos
 los bloques estaticos se crean una solo vez y antes de los no estaticos y constructores 
@@ -76,7 +107,7 @@ El SET 	no trabaja por indices y no admite repeTidos
 -- En un LinkedHashSet sus valores se recuperan de acuerdo como fueron ingresados y no admite repetidos
 -- En un TreeSet recupera en orden natural del tipo datos orden alfabetico en caso de String, no permite ingresar null
 -- El orden de recuperacion de TreeSet con tipo de valor String es caracteres especiales, numeros, mayusculas, minisculas
--- En un TreeSet no permite a�adir NULL en ejecucion
+-- En un TreeSet no permite añadir NULL en ejecucion
 Los MAPAS es un tipo de coleccion TIPO - VALOR  (ESTRUCUTURA DE DATOS)
 --En la coleccion HashMap no tiene un orden especifico de recuperacion de valores
 --En HashMap permite que la clave sea null, si se repitiera la clave su valor toma el ultimo asignado
@@ -87,7 +118,7 @@ Los MAPAS es un tipo de coleccion TIPO - VALOR  (ESTRUCUTURA DE DATOS)
 
 ENUMERACIONES
 
-Un varible declarada como final se convierte en un constante
+Una varible declarada como final se convierte en un constante(Los tipos enum son implícitamente final)
 En una INTERFACE los atributos son public static y final (constantes), colocandole como tal o no
 Un ENUM realiza lo mismo que una constante ademas restringue rangos de valores
 Los atributos de un ENUM son tipos de datos miembro del ENUM
@@ -102,6 +133,7 @@ Si el contructor del ENUM ES DECLARADO explicitamente con parametros sus miembro
 El posible declara metodo de acceso solo para un miebro del ENUM
 Los ENUM pueden ser declarados dentro o fuera de la clase
 --Si el ENUM es declarado dentro de una clase y quiere ser accedido dentro de otra clase antepongo el nombre de la clase donde fue declarado el ENUM
+Cualquier intento por crear un objeto de un tipo enum con el operador new produce un error de compilación.
 
 CLASE INNER
 
@@ -140,7 +172,7 @@ No hay polimorfismo en la asiganacion de genericos
 
 El metodo start de Thread solo se puede ejecutar una vez si se manda 2 veces da un error en ejecucion
 sleep y wait de thread lanzan excepciones checked
-Al envolver en un try cartch o propagar la excepcion que lanza wait compila pero lanza una excepcion en ejecucion para resolver esto, se envuele EL WAIT en un contexto synchronized
+Al envolver en un try catch o propagar la excepcion que lanza wait compila pero lanza una excepcion en ejecucion para resolver esto, se envuele EL WAIT en un contexto synchronized
 El metodo notify no lanza excepcion checked pero lanza una excepcion en ejecucion para resolver esto, se envuele en un contexto synchronized
 Para salir del metodo wait :  el hilo de ejecucion termine, que el tiempo maximo de espera termine o con un metodo notify
 el notify se manda solo a un hilo que esta en espera
@@ -173,8 +205,7 @@ A nivel de clase los modificadores son public o default
 Si una clase es final la clase no puede ser heredada
 Una clase no puede ser al mismo tiempo final y abstract
 No puede ser sobreescrito pero si puede ser heredado es decir invocado a las subclases
-Una metodo
- no puede ser al mismo tiempo final y abstract
+Una metodo no puede ser al mismo tiempo final y abstract
  Cuando se declara final a un atributo de clase este debe ser inicializado ya que por definicion un atributo no puede ser modificado
  Un atributo de clase declarado como final deber inicializado en su delcaracion, en un bloque de inicilizacion o en el constructor de la clase
  UN atributo declarado en una interfaz es por defecto final es decir una constante
@@ -196,13 +227,186 @@ En compilacion ejecuto en el directorio de proyecto javac ruta\Clase.java, el pa
 En ejecucion se debe validar el directorio de la declaracion del paquete para ejecutar la clase
 Por ejemplo:
 package com.test;
-tomar toda la ruta del paquete para ejecutar java com.test.Clase � java com/test/Clase 
+tomar toda la ruta del paquete para ejecutar java com.test.Clase ó java com/test/Clase 
 
 ---------------------------------------------- IMPORT DE ESTATICOS ----------------------------------------------
 Al importar paquetes o librerias con static debo acceder hasta los miembros estaticos 
+Una declaración import static nos permite hacer referencia a los miembros static importados, como si se hubieran declarado en la clase que los utiliza
+Si no se inicializa una variable final, se produce un error de compilación
+Tratar de modificar una variable de instancia final después de inicializarla es un error de compilación.
 
 Las referencias nunca se comparan con == sino con equals
 Si al comparar dos referencias con == para que sea true deben apuntar al mismo objeto
-Si es menor de 127 lso valores asigandos a referecnias las dos referencias apuntas al mismo valor es decir reutlizan el mismo valor para las dos referencias
+Si es menor de 127 los valores asignados a referecnias las dos referencias apuntas al mismo valor es decir reutlizan el mismo valor para las dos referencias
 
 
+/**********************************************************************************************************************************************************************/
+Un identificador en Java debe comenzar por una letra, el signo de subrayado “_” o símbolo de moneda
+El nombre del fichero debe coincidir con el de la clase pública
+Las sentencias package e import afectarán a todas las clases declaradas en el fichero
+Strictfp puede modificar una clase o un método, nunca una variable.
+Los métodos de una interfaz no pueden ser static ni final, strictfp, o native
+Pueden marcarse static: métodos, variables, clases anidadas y bloques de inicialización
+synchronized: Sólo métodos pueden marcarse synchronized. Significa que solo un hilo puede acceder al método a la vez
+Native:Sólo métodos pueden marcarse native. Indica que el método está implementado en un lenguaje que es dependiente de la plataforma, usualmente C. 
+Su declaración acabará en ‘;’ como los métodos abstractos, ya que su implementación no se especifica.
+Transient variable: Si marcamos una variable de instancia transient no se añadirá en la serialización del objeto que la contenga.
+Volatile variable:Indica al hilo que accede a la variable que siempre debe reconciliar su copia privada con la copia en memoria. Solo aplica a variables de instancia
+Las variables no locales (miembro y de clase) pueden utilizar los siguientes modificadores: public, protected, private, static, final, transient, volatile.
+Un método se puede sobrecargar en la misma clase o en una subclase
+
+Para devolver correctamente un valor para que se ajuste al tipo de retorno, hay que tener en cuenta:
+	•Sólo podemos devolver null si el tipo de retorno es una variable de referencia (objeto y no tipo primitivo).
+	•Si el tipo de retorno es un tipo primitivo cualquier valor que sea del tipo o que se pueda convertir implícitamente o explícitamente (usando un cast).
+	•Nunca retornar un valor si el tipo de retorno es void.
+	•Si el tipo de retorno es una variable de referencia (objeto y no tipo primitivo) podemos devolver un objeto de una subclase, ya que se hace el cast implícitamente.
+	•Si el tipo de retorno es una interfaz podemos devolver cualquier objeto de una clase que implemente dicha interfaz.
+Las clases abstractas también tienen constructores. Estos costructores serán llamados cuando se ejecute el constructor de las subclases que la concretan.
+
+El Heap (Montículo) y el Stack (Pila) son diferentes memorias que utiliza la Java Virtual Machine de Java
+El administrador del Heap es el sistema de administración de almacenamiento automático o más conocido como Garbage Collector.
+
+¿Qué se guarda en el Stack?
+– variables locales
+– variables de referencia
+– parámetros y valores de retorno
+– resultados parciales
+– el control de la invocación y retorno de métodos
+
+¿Qué se guarda en el Heap?
+– objetos
+– variables de instancia
+
+Aunque tengamos un valor real que pueda caber en un “float” y lo queremos asignar a un
+double, siempre será necesario el sufijo o el casting:
+
+	float f = 500.7; //ERROR 
+	float f = 500.7f; //OK 
+	float f = (float) 500.7; //OK 
+	
+Un objeto es elegible por el garbage colector cuando ningún thread vivo puede acceder a él.
+Cómo hacer un objeto elegible:
+Estableciendo la referencia a null:
+Cuando asignamos la referencia de un objeto a null estamos perdiendo cualquier posibilidad de acceder a él. 
+Reasignando la referencia:
+Cuando hacemos que la referencia que apunta a un objeto apunte a otro distinto dejando el primero inaccesible
+Se puede ejecutar mediante:
+System.gc();
+U obteniendo una instancia de Runtime:
+Runtime rt = Runtime.getRuntime();
+rt.gc();
+
+? Los Operadores en Java (II) Control del Flujo: Bucles ? .Control del Flujo: If y Switch 
+28
+ 
+nov
+ Las sentencias condicionales permiten ejecutar código de forma selectiva.
+En Java tenemos las sentencias condicionales if y switch.
+
+Sentencia If:
+La sintaxis más sencilla de una sentencia if es:
+
+12 if (expresionLogica)  //Si expresionLogica se evalúa a true entonces se ejecuta codigo.    codigo 
+Si se tiene una sola sentencia de código no es obligatorio encerrarla entre llaves pero siempre es recomendable por legibilidad.
+
+Ejemplo:
+
+123 if (precio < 100){     comprar();  //Mas legible entre llaves. } 
+ 
+
+Si nos encontramos un if sin llaves debemos recordar que solo aplica a la primera sentencia.
+
+1234 if (precio < 100)     comprar();      //Solo esta sentencia forma parte del if.     salirTienda();  //No forma parte del código del if. Siempre se ejecuta.     volverACasa();  //No forma parte del código del if. Siempre se ejecuta. 
+La cláusula else es opcional. Se incluye cuando queremos que se ejecute código en el caso de que no se cumpla la condición en el if.
+
+123456 if (precio < 100){     comprar(); } else{     System.out.println("Yo no soy tonto."); } 
+También podemos tener una estructura if, else-if, else. Se da en los casos en los que queremos comprobar varias condiciones.
+
+if (precio < 100)
+	{     
+		comprar(); 
+	} 
+else if (price < 2000 && tengoCredito)
+	{     
+		comprarConTarjeta(); 
+	} 
+else
+	{     
+		System.out.println("Yo no soy tonto."); 
+	} 
+En las sentencias If se cumplirá:
+
+•Habrá 0 o muchos else-if y precederán a la cláusula else.
+•Habrá 0 o 1 else e irá a continuación de todas las cláusulas else-if.
+•Cuando una condición se cumple el resto no se comprueba.
+•Si tenemos un else y no sabemos a que if corresponde será el más cercano sin else.
+•La asignación en una condición no da error si se trata de un lógico: if(indicador=true)
+
+Switch
+
+Con esta sentencia vamos a evaluar una expresión y dependiendo de su valor ejecutaremos un código u otro:
+
+123456 switch (expresion){     case constante1: codigo1     case constante2: codigo2     case constante3: codigo3     default: codigo } 
+Si expresion coincide con alguna de las constantes se ejecutará el código de ese case y se seguirá ejecutando el código de los siguientes case hacia abajo hasta que se encuentre una sentencia break.
+
+La sentencia default es opcional y se puede especificar cuando queremos que se ejecute un código para cualquier valor que sea distinto a los especificados en los case.
+
+En los siguientes ejemplos podemos comprobar cómo afecta al resultado la existencia y posición de las sentencias breaks y default:
+
+1. Ejemplo de un Switch Típico.
+Switch con breaks en cada case y una clásula default al final.
+Recorremos el array niveles. Cada valor entra en su case correspondiente y para al tener la sentencia break. Al estar la cláusula default al final no hace falta que tenga break.
+
+public class EjemploSwitch1{     public static void main (String[] args){         int[] niveles = {1, 2, 3, 0};           System.out.println("\nEjecucion Switch Tipico (breaks y default al final): " );         for (int i=0; i < niveles.length; i++){      {             System.out.println("Nivel: " + niveles[i]);             switch (niveles[i]){             case 1:   System.out.println("\tNivel Basico.");                       break;               case 2:   System.out.println("\tNivel Intermedio.");                       break;               case 3:   System.out.println("\tNivel Avanzado.");                       break;               default: System.out.println("\tNivel no informado.");             }         }     } } 
+Resultado:
+
+
+2. Sentencia Default No al Final.
+En este caso hemos colocado la sentencia default sin break después del primer case. Todos los case tienen break. Cuando niveles[i] es igual a 0, ejecuta el código asociado a default. Al no tener break pasa al case 2, ejecuta su código y entonces sí para al tener break.
+
+public class EjemploSwitch2{     public static void main (String[] args){         int[] niveles = {1, 2, 3, 0};     System.out.println("\nEjecucion Switch con Breaks Default enmedio sin break: " );         for (int i=0; i < niveles.length; i++)       {             System.out.println("Nivel: " + niveles[i]);             switch (niveles[i]){             case 1:   System.out.println("\tNivel Basico.");                       break;               default:  System.out.println("\tNivel no informado.");               case 2:   System.out.println("\tNivel Intermedio.");                       break;               case 3:   System.out.println("\tNivel Avanzado.");                       break;               }         }     } } 
+Ejecución:
+
+
+3. Sentencias Case sin Break (Ejemplo en el que no tiene lógica aplicarlo).
+En este Switch comprobamos qué ocurre si no colocamos ningún break. Para cada valor de niveles se ejecutan todos los case y default.
+public class EjemploSwitch3{     public static void main (String[] args){         int[] niveles = {1, 2, 3, 0};         System.out.println("\nEjecucion Switch sin Breaks (entra en todos los case cada vez): ");         for (int i=0; i < niveles.length; i++)         {             System.out.println("Nivel: " + niveles[i]);             switch (niveles[i])             {               case 1: System.out.println("\tNivel Basico.");                 case 2: System.out.println("\tNivel Intermedio.");                 case 3: System.out.println("\tNivel Avanzado.");                 default: System.out.println("\tNivel no informado.");             }         }     } } 
+Ejecución:
+
+
+4. Sentencias Case Sin Break (Ejemplo en el que sí podría ser útil).
+En este caso comprobamos cómo a veces puede tener lógica para nuestro código dejar los case sin break. Hemos cambiado el orden de las constantes en los case.
+
+public class EjemploSwitch4
+{     
+	public static void main (String[] args)
+	{         
+		int[] niveles = {1, 2, 3, 0};       
+		System.out.println("\nEjecucion Switch sin Breaks (con logica que podria ser correcta): ");         for (int i=0; i < niveles.length; i++)         {             System.out.println("Nivel: " + niveles[i]);             switch (niveles[i])             {               case 3: System.out.println("\tNivel Avanzado.");                 case 2: System.out.println("\tNivel Intermedio.");                 case 1: System.out.println("\tNivel Basico.");                       break;                 default: System.out.println("\tNivel no informado.");             }         }     } } 
+Ejecución:
+
+En el switch se debe cumplir:
+
+•La expresión evaluará a char, byte, short, int o enum.
+•Las constantes deben ser constantes en tiempo de compilación.
+•Hay que usar break cuando se necesite parar evitar la ejecución de los case posteriores.
+•La cláusula default no tiene por qué ser la última.
+•No puede haber dos case comprobando el mismo valor. No compilará.
+•No se pueden omitir las cláusulas case ni los ‘:’
+
+RESUMEN DE EXAMENES DE SIMULADOR
+NO ES POSIBLE HACER TANTO AMPLIACIÓN(WIDENING) Y ENVASADO(WRAPPING ) AL MISMO TIEMPO
+CUANDO "==" SE UTILIZA PARA COMPARAR UN PRMITIVO CON SU CLASE CONTENEDORA EL OBEJETO ES UNBOXED Y SUS VALORES PRIMITIVOS SON COMPARADOS.
+
+
+
+Asersiones
+
+Características:
+
+•Se incorporaron en la versión J2SE 1.4
+•Siempre se afirma que algo será verdadero.
+•Las assertions están deshabilitadas por defecto.
+•Para habilitar las assertions añadir al comando java el parámetro -ea (ó -enable assertions).
+•Para deshabilitar las assertions añadir al comando java el parámetro -da (ó -disableassertions).
+•La clase java.lang.AssertionError desciende de java.lang.Error y ésta a su vez de java.lang.Throwable.
