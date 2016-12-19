@@ -1,0 +1,1592 @@
+JQUERY:
+•	jQuery utiliza el símbolo $() como función que nos permitirá interactuar con la librería. 
+•	De hecho, el símbolo $ es un simple sinónimo de la verdadera función window.jQuery, así:
+var jQuery = window.jQuery = window.$
+•	jQuery nos ofrece la función jQuery.noConflict(); que desactiva el símbolo $() dejándolo con jQuery().
+•	Sintaxis básica es: $ ( selector ). acción ()
+Un signo $ para definir / acceso jQuery
+A ( selector ) para "consulta (o encontrar)" elementos HTML
+A jQuery acción () para realizar en el elemento (s)
+Ejemplos:
+$ (This) .hide (): oculta el elemento actual.
+$ ("P") .hide ():Oculta todos los elementos <p>.
+$ (". Test") .hide (): Oculta todos los elementos con class = "test".
+$ ("# Test") hide (): Oculta el elemento con id = "test".
+
+El Evento Ready
+$(document).ready(function(){
+
+   // jQuery methods go here...
+
+}); 
+Esto es para evitar que cualquier código jQuery se ejecute antes de que el documento haya
+terminado de cargarse
+jQuery Selectores
+Selectores de jQuery le permiten seleccionar y manipular elemento (s) de HTML
+Todos los selectores de jQuery comienzan con el signo de dólar y paréntesis: $ ().
+
+	Selector de elementos
+
+El selector de elementos jQuery selecciona elementos basados en el nombre del elemento.
+Puede seleccionar todos los elementos <p> de una página con esto:    $("p")
+
+Ejemplo
+Cuando un usuario hace clic en un botón, todos los elementos <P> se ocultarán:
+
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide();
+  });
+}); 
+
+
+	Selector #id
+
+El selector #id jQuery utiliza el atributo id de una etiqueta HTML para encontrar el elemento específico.
+Para encontrar un elemento con un ID específico, escriba un #, seguido por el id del elemento HTML: $("#test")
+
+Ejemplo
+Cuando un usuario hace clic en un botón, el elemento con id = "test" se oculta:
+
+$(document).ready(function(){
+  $("button").click(function(){
+    $("#test").hide();
+  });
+});
+	El Selector .Class
+
+El selector de clase jQuery encuentra elementos con una clase específica. 
+Para encontrar elementos con una clase específica, escriba un carácter de punto, seguido del nombre de la clase: $(".test") 
+Ejemplo
+Cuando un usuario hace clic en un botón, los elementos con class = "test" se ocultarán:
+$(document).ready(function(){
+  $("button").click(function(){
+    $(".test").hide();
+  });
+}); 
+
+
+Syntax	Description
+$("*")	Selects all elements
+$(this)	Selects the current HTML element
+$("p.intro")	Selects all <p> elements with class="intro"
+$("p:first")	Selects the first <p> element
+$("ul li:first")	Selects the first <li> element of the first <ul>
+$("ul li:first-child")	Selects the first <li> element of every <ul>
+$("[href]")	Selects all elements with an href attribute
+$("a[target='_blank']")	Selects all <a> elements with a target attribute value equal to "_blank"
+$("a[target!='_blank']")	Selects all <a> elements with a target attribute value NOT equal to "_blank"
+$(":button")	Selects all <button> elements and <input> elements of type="button"
+$("tr:even")	Selects all even <tr> elements
+$("tr:odd")	Selects all odd <tr> elements
+
+Sintaxis jQuery Para Métodos de Evento
+En jQuery, la mayoría de los eventos DOM tienen un método jQuery equivalente.
+Para asignar un evento click a todos los párrafos de una página, usted puede hacer esto: $("p").click(); 
+El siguiente paso es definir lo que debería suceder cuando se activa el evento. Debe pasar una función para el evento:
+
+$("p").click(function(){
+  // action goes here!!
+}); 
+
+El siguiente ejemplo se dice que: Cuando un evento clic se desencadena en un elemento <p>; ocultar el actual elemento <p>:
+$("p").click(function(){
+  $(this).hide();
+}); 
+
+dblclick ()
+El método dblclick () atribuye una función de controlador de eventos para un elemento HTML.
+La función se ejecuta cuando el usuario hace doble clic en el elemento HTML:
+
+$("p").dblclick(function(){
+  $(this).hide();
+}); 
+
+MouseEnter ()
+
+El método MouseEnter () atribuye una función de controlador de eventos para un elemento HTML.
+La función se ejecuta cuando el puntero del ratón entra en el elemento HTML:
+
+$("#p1").mouseenter(function(){
+  alert("You entered p1!");
+});
+
+mouseleave ()
+
+El método mouseleave () atribuye una función de controlador de eventos para un elemento HTML.
+La función se ejecuta cuando el puntero del ratón sale del elemento HTML:
+
+$("#p1").mouseleave(function(){
+  alert("Bye! You now leave p1!");
+});
+
+mousedown ()
+
+El método mousedown () atribuye una función de controlador de eventos para un elemento HTML.
+La función se ejecuta cuando se pulsa el botón izquierdo del ratón, mientras que el ratón está sobre el elemento HTML:
+$("#p1").mousedown(function(){
+  alert("Mouse down over p1!");
+}); 
+
+jQuery DOM Manipulation
+OBTENER CONTENIDO - TEXT (), HTML (), Y VAL ()
+Tres métodos simples, pero útiles, jQuery para la manipulación DOM son:
+•	text () - Establece o devuelve el contenido de texto de los elementos seleccionados
+•	html () - Establece o devuelve el contenido de los elementos seleccionados (incluyendo el formato HTML)
+•	val () - Establece o devuelve el valor de los campos del formulario
+
+
+Ejemplos
+$("#btn1").click(function(){
+  alert("Text: " + $("#test").text());
+});
+$("#btn2").click(function(){
+  alert("HTML: " + $("#test").html());
+});
+$("#btn1").click(function(){
+  alert("Value: " + $("#test").val());
+}); 
+
+ESTABLECER CONTENIDO - TEXT (), HTML (), Y VAL ()
+El siguiente ejemplo muestra cómo establecer el contenido con los métodos jQuery  text(), html(), y val():	
+Ejemplo
+$("#btn1").click(function(){
+  $("#test1").text("Hello world!");
+});
+$("#btn2").click(function(){
+  $("#test2").html("<b>Hello world!</b>");
+});
+$("#btn3").click(function(){
+  $("#test3").val("Dolly Duck");
+}); 
+OBTENER ATRIBUTOS - ATTR ()
+El método jQuery attr () se utiliza para obtener valores de atributos.
+El siguiente ejemplo muestra cómo obtener el valor del atributo href en un enlace:
+
+Ejemplo
+$("button").click(function(){
+  alert($("#w3s").attr("href"));
+}); 
+UNA LLAMADA DE RETORNO PARA EL TEXTO (), HTML (), Y VAL ()
+Todos los tres métodos jQuery anteriores: Text (), html (), y val (), también vienen con una función de devolución de llamada. La función de devolución de llamada tiene dos parámetros: el índice del elemento actual de la lista de elementos seleccionados y el (antiguo) valor original. A continuación, regrese a la cadena que desea utilizar como el nuevo valor de la función.
+El ejemplo siguiente muestra el text () y html () con una función de devolución de llamada:
+$("#btn1").click(function(){
+  $("#test1").text(function(i,origText){
+    return "Old text: " + origText + " New text: Hello world!
+    (index: " + i + ")"; 
+  });
+});
+
+$("#btn2").click(function(){
+  $("#test2").html(function(i,origText){
+    return "Old html: " + origText + " New html: Hello <b>world!</b>
+    (index: " + i + ")"; 
+  });
+}); 
+
+ESTABLECER ATRIBUTOS - ATTR ()
+El método jQuery attr () también se utiliza para configurar / cambiar valores de atributos.
+El siguiente ejemplo muestra cómo cambiar (set) el valor del atributo href en un enlace:
+Ejemplo
+$("button").click(function(){
+  $("#w3s").attr("href","http://www.w3schools.com/jquery");
+}); 
+El método attr () también le permite configurar múltiples atributos al mismo tiempo.
+El siguiente ejemplo muestra cómo establecer tanto el href y atributos title, al mismo tiempo:
+Ejemplo
+$("button").click(function(){
+  $("#w3s").attr({
+    "href" : "http://www.w3schools.com/jquery",
+    "title" : "W3Schools jQuery Tutorial"
+  });
+}); 
+jQuery - Añadir elementos
+Veremos cuatro métodos de jQuery que se utilizan para añadir nuevos contenidos:
+•	append () – inserta contenido al final de los elementos seleccionados
+•	prepend () - inserta contenido al principio de los elementos seleccionados
+•	after () - Inserta el contenido después de los elementos seleccionados
+•	before () - Inserta el contenido antes de que los elementos seleccionados
+Ejemplo
+$("p").append("Some appended text."); 
+
+function appendText() {
+    var txt1 = "<p>Text.</p>";               // Create element with HTML  
+    var txt2 = $("<p></p>").text("Text.");   // Create with jQuery
+    var txt3 = document.createElement("p");  // Create with DOM
+    txt3.innerHTML = "Text.";
+    $("p").append(txt1, txt2, txt3);         // Append the new elements 
+}
+
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("img").before("<b>Before</b>");
+  });
+
+  $("#btn2").click(function(){
+    $("img").after("<i>After</i>");
+  });
+});
+jQuery - Eliminar elementos
+
+JQUERY REMOVE (MÉTODO)
+
+El método jQuery remove () elimina el elemento (s) seleccionado y sus elementos secundarios.
+Ejemplo:            $("#div1").remove(); 
+EMPTY MÉTODO JQUERY ()
+El método empty jQuery () elimina los elementos secundarios del elemento (s) seleccionado.
+Ejemplo:           $("#div1").empty();
+FILTRA LOS ELEMENTOS PARA SER ELIMINADOS
+El método jQuery remove () también acepta un parámetro, que le permite filtrar los elementos a eliminar. El parámetro puede ser cualquiera de las sintaxis del selector de jQuery.
+El ejemplo siguiente elimina todos <p> elementos con class = "italic": 
+
+Ejemplo:
+$("p").remove(".italic");
+EJEMPLO DE ESTILOS
+La siguiente hoja de estilo se utilizará para todos los ejemplos en esta página:
+.important
+{
+font-weight:bold;
+font-size:xx-large;
+}
+
+.blue
+{
+color:blue;
+}
+
+jQuery - Obtener y establecer las clases CSS
+
+ jQuery tiene varios métodos para la manipulación de CSS. Vamos a ver los siguientes métodos:
+•	addClass () - Añade una o más clases a los elementos seleccionados 
+•	removeClass () - Elimina una o más clases de los elementos seleccionados 
+•	toggleClass () - Cambia entre la adición / eliminación de clases de los elementos seleccionados 
+•	css () - Establece o devuelve el atributo de estilo 
+
+jQuery addClass () Método
+El siguiente ejemplo muestra cómo agregar atributos de clase a diferentes elementos. Por supuesto, usted puede seleccionar varios elementos, al agregar clases:
+
+Ejemplo
+$("button").click(function(){
+  $("h1,h2,p").addClass("blue");
+  $("div").addClass("important");
+}); 
+También puede especificar varias clases dentro del método addClass ():
+Ejemplo:
+$("button").click(function(){
+  $("#div1").addClass("important blue");
+});
+jQuery removeClass () Método
+El siguiente ejemplo muestra cómo eliminar diferentes elementos de su atributo de clase:
+Ejemplo:
+$("button").click(function(){
+  $("h1,h2,p").removeClass("blue");
+});
+jQuery toggleClass () Método
+El siguiente ejemplo le mostrará cómo utilizar el método jQuery toggleClass (). Este método cambia entre añadir / eliminar las clases de los elementos seleccionados:
+Ejemplo 
+$("button").click(function(){
+  $("h1,h2,p").toggleClass("blue");
+}); 
+jQuery  Método  CSS ()
+Los método CSS () establecen o devuelven una o más propiedades de estilo para los elementos seleccionados.
+Obtener  una propiedad CSS
+El siguiente ejemplo devuelve el valor del color de fondo del elemento coincidente:
+Ejemplo 
+$("p").css("background-color"); 
+Establecer una propiedad CSS
+Para establecer una propiedad CSS especificado, utilice la siguiente sintaxis:
+
+css("propertyname","value");
+
+El ejemplo siguiente establecerá el valor de color de fondo para todos los elementos coincidentes:
+Ejemplo 
+$("p").css("background-color", "yellow");
+Establecer Múltiples Propiedades de CSS
+Para configurar múltiples propiedades CSS, utilice la siguiente sintaxis:
+
+css({"propertyname":"value","propertyname":"value",...});
+
+El ejemplo siguiente establecerá un fondo de color y un tamaño de fuente para todos los elementos coincidentes:
+jQuery – Dimensiones
+jQuery Métodos Dimension
+
+jQuery tiene varios métodos importantes para trabajar con dimensiones:
+•	width ()
+•	height ()
+•	innerWidth ()
+•	innerHeight ()
+•	outerWidth ()
+•	outerHeight ()
+
+Métodos jQuery weigth() y  height()
+El método weigth () establece o devuelve el ancho de un elemento (no incluye padding, borde o margen).
+El método height () establece o devuelve la altura de un elemento (incluye sin padding, borde o margen).
+El ejemplo siguiente devuelve la anchura y la altura de un elemento <div>:
+
+$("button").click(function(){
+  var txt="";
+  txt+="Width: " + $("#div1").width() + "</br>";
+  txt+="Height: " + $("#div1").height();
+  $("#div1").html(txt);
+});
+
+Métodos jQuery innerWidth (), innerHeight () 
+
+El método innerWidth () devuelve el ancho de un elemento (incluye padding).
+El método innerHeight () devuelve la altura de un elemento (incluye padding).
+El ejemplo siguiente devuelve el interior de la anchura / altura de un elemento <div> se especifica:
+
+$("button").click(function(){
+  var txt="";
+  txt+="Inner width: " + $("#div1").innerWidth() + "</br>";
+  txt+="Inner height: " + $("#div1").innerHeight();
+  $("#div1").html(txt);
+});
+Métodos jQuery outerWidth () y outerHeight () 
+El método outerWidth () devuelve el ancho de un elemento (incluye el relleno y borde).
+El método outerHeight () devuelve la altura de un elemento (incluye el relleno y borde).
+El ejemplo siguiente devuelve el exterior de ancho / altura de un elemento <div> se especifica:
+
+$("button").click(function(){
+  var txt="";
+  txt+="Outer width: " + $("#div1").outerWidth() + "</br>";
+  txt+="Outer height: " + $("#div1").outerHeight();
+  $("#div1").html(txt);
+});
+
+El método outerWidth (true) devuelve el ancho de un elemento (incluye relleno, borde y margen).
+El método outerHeight (true) devuelve la altura de un elemento (incluye relleno, borde y margen).
+
+$("button").click(function(){
+  var txt="";
+  txt+="Outer width (+margin): " + $("#div1").outerWidth(true) + "</br>";
+  txt+="Outer height (+margin): " + $("#div1").outerHeight(true);
+  $("#div1").html(txt);
+});
+jQuery más weigth () y la height ()
+El ejemplo siguiente devuelve la anchura y la altura del documento (el documento HTML) y la ventana (la ventana del navegador):
+
+$("button").click(function(){
+  var txt="";
+  txt+="Document width/height: " + $(document).width();
+  txt+="x" + $(document).height() + "\n";
+  txt+="Window width/height: " + $(window).width();
+  txt+="x" + $(window).height();
+  alert(txt);
+});
+
+El ejemplo siguiente establece la anchura y la altura de un elemento <div>
+
+$("button").click(function(){
+  $("#div1").width(500).height(500);
+});
+
+
+Ejemplo 
+$("p").css({"background-color":"yellow","font-size":"200%"}); 
+EJEMPLO BASICO
+<html>
+<head>
+<title>Ejercicio jQuery 2</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"> </script>
+<script type="texto/javascript">
+<!--
+$(document).ready(function()
+{ // 1
+var resultat = $('#p1').text(); // 2
+alert(resultat)
+})
+//-->
+</script>
+</head>
+<body>
+<p id="p1">¡Hola Mundo!</p>
+< /body>
+</html>
+
+Seleccionamos el elemento con ID igual a p1. Nos devuelve la función$ es una instancia de la librería jQuery inicializada con el elemento p del DOM. A partir de aquí, el método text(), nos devuelve el contenido del nodo como cadena de texto. Seleccionamos  el elemento con ID igual a p1. De hecho, lo que nos devuelve la función$ es una instancia de la librería jQuery inicializada con el elemento p del DOM. A partir de aquí, el método text(), nos devuelve el contenido del nodo como cadena de texto.
+CSS a los selectores de jQuery
+
+Casi siempre podemos aplicar la misma regla de CSS a los selectores de jQuery,
+y encontramos:
+
+$('*') 			Todos los elementos
+$('#propiedad) 		Elemento con ID=propiedad
+$('.clase') 		Elementos que tienen la clase CSS
+$('img') 			Elementos
+$('img,p,selectorN') 		Combina los elementos img, p, selectorN
+$('a[rel="nofollow"]') 		Todos los a con el atributo rel="nofollow".
+$('[atributo|="valor"]') 		Atributo que sea o empiece por valor.
+$('[attribute="value"]') 		Atributo que contenga el valor delimitado porespacios.
+$('[atributo="valor"]') 		Que el atributo no tenga el valor.
+$('[atributo^="valor"]') 		Que el valor del atributo empiece por valor.
+$('[atributo$="valor"]') 		Que el valor del atributo acabe con...
+$('[atributo]') 			Que el elemento contenga el atributo.
+$('[atributo1="1"][atributo2="2]') 	Que contengan todos los atributos con valores.
+$('tr:first-child')	 La primera fila de una tabla. También podemos emplear :last-child, y :nth-child(4n).
+$("tr:even")	 Fila impar, también par con odd.
+$('tr:eq(3)') 	El tercer elemento del conjunto seleccionado En este caso, la tercera fila del conjunto de todas
+las tablas de la página. También, podemos emplear:
+• gt(n)		 conjunto de elementos a partir de n(el enésimo elemento no incluido)
+• lt(n) 		 conjunto menor que n
+INICIO
+• not(n)		 todos, excepto n
+$('tr:first') 	 El primer elemento. También podemos
+$("div:contains('Libro')") 	Seleccionará los elementos div en cuyo contenido aparezca la palabra libro.
+$("div:has(p)") 		Elementos div que contengan otro elemento p.
+$("td:parent")		 Elementos que son padres
+.NET
+DataSet.Merge
+DataSet1.Merge(DataSet2)
+Combina un objeto DataSet1 especificado y su esquema en el objeto DataSet2 actual.
+C# STRING (METODOS)
+DataTable.Select (Método) (String)
+Obtiene una matriz de todos los objetos DataRow que coinciden con los criterios de filtro, String : 
+Criterios que se van a utilizar para filtrar las filas:
+•	Los valores de cadena se encierran entre comillas simples ' ' .  Si la cadena contiene comillas simples ', la cita debe duplicarse. Ejemplo: DataView.RowFilter = "Name = 'John'"
+•	Los valores de fecha están encerrados dentro de caracteres afilados # #
+Ejemplo: DataView.RowFilter = "Fecha = # 31/12/2008 #"
+
+•	Los operadores de comparación  Igual, no es igual, menos, mayores operadores se utilizan para incluir sólo los valores que se adapten a una expresión de comparación.  Puede utilizar estos operadores = <> < <= > >=; 
+Ejemplos:
+DataView.RowFilter = "Num = 10" // número es igual a 10
+DataView.RowFilter = "Fecha <# 1/1/2008 No."//fecha es inferior a 1/1/2008
+DataView.RowFilter = "Nombre <> 'John'" // cadena no es igual a 'John'
+
+•	Operador IN se utiliza para incluir sólo los valores de la lista.  Usted puede utilizar el operador de todos los tipos de datos, tales como números o cadenas. 
+Ejemplos:
+DataView.RowFilter = "Id IN (1, 2, 3)" // valores  enteros
+ DataView.RowFilter = "Precio IN (1.0, 9.9, 11.5)" // flotar valores
+ DataView.RowFilter = "Nombre IN ('John', 'Jim', 'Tom')" // valores de cadena
+ DataView.RowFilter = "Fecha de EN (# 12/31/2008 No., # 1/1/2009 No.)" // valores de fecha y hora
+ DataView.Ro
+wFilter = "Id NOT IN (1, 2, 3)" // no los valores de la lista
+
+Clases abstractas vs.  Interfaces
+Una clase abstracta ofrece comportamientos comunes a objetos del mismo tipo a través del mecanismo de la herencia. La implementación de una interfaz permite a un objeto comportamientos que no dependen de su jerarquía de clases.
+Una interfaz se diferencia de una clase abstracta porque una interfaz sólo puede contener constantes y métodos abstractos. Una clase abstracta puede contener métodos concretos, una interfaz no.
+En una interfaz todos los atributos son por defecto public final static (constantes) y todos los métodos son public abstract. Esto quiere decir que una clase abstracta puede contener atributos variables pero una interfaz no.
+Cualquier clase que contenga uno o más métodos abstractos se debe declarar abstracta
+Un método abstracto es un método sin cuerpo. 
+ 
+Todo lo que declaremos en una interfaz, deberá ser implementado en las clases que implementen la interfaz.
+Una clase abstracta puede incluir funcionalidad, al contrario que una interfaz.
+Si la clase que implementa la interface se declara como abstracta no tiene por qué implementar los métodos de la interface
+Si una clase abstracta solo contiene la declaración de métodos abstractos, la misma debería ser creada como una interfaces en vez de clase abstracta.
+Al definir interfaces permitimos la existencia de variables polimórficas y la invocación polimórfica de métodos
+Clase base
+Sólo existe una restricción para heredar de ella, y es que la clase base esté sellada (sealed), en cuyo caso no podremos heredar de esa clase base.
+OpenFileDialog
+Solicita al usuario abrir un archivo. Esta clase no puede heredarse, para cargar un archivo…..
+FileInfo (Clase)
+Proporciona propiedades y métodos de instancia para crear, copiar, eliminar, mover y abrir archivos y contribuye a la creación de objetos FileStream, su constructor inicializa una nueva instancia y actúa como contenedor de una ruta de archivos.
+
+Su método CreateText Crea un objeto StreamWriter que escribe un nuevo archivo de texto.
+ADO.NET
+DATAADAPTER.- Es  muy similar al objeto COMMAND es decir se usa para transportar instrucciones SQL a la base en disco, de hechos sus formatos e instrucciones son muy similares a los vistos para el objeto COMMAND, su diferencia principal es que dataadapter esta más especializado y contiene una serie de metodos que facilitan la interacción entre el DATASET y la Base de Datos en disco 
+PL/SQL
+El paquete (package) UTL_FILE .- nos va a permitir leer o escribir en ficheros del sistema operativo (Linux, Unix, Window, etc.) desde los programas que hagamos en PL / SQL en la base de datos Oracle.
+Las funciones que voy a utilizar del paquete ULT_FILE son:
+UTL_FILE.FOPEN() – Abrir un fichero
+UTL_FILE.PUT() – Escribir en un fichero
+UTL_FILE.GET_LINE() – Leer una línea de un fichero.
+UTL_FILE.FCLOSE() – Cerrar un fichero.
+Procedimiento almacenado para escribir en un fichero.
+ Paso a UTL_FILE.FOPEN() el nombre del objeto directorio, PRUEBA en este ejemplo, nombre del fichero prueba.txt, 'W' es el modo de apertura y la longitud máxima de la línea a escribir.
+ Con el modo de apertura W si el fichero no existe lo crea y si existe lo sobrescribe.
+CREATE OR REPLACE PROCEDURE escribir_file IS
+ cadena VARCHAR2(32767);  
+file UTL_FILE.FILE_TYPE;  
+ BEGIN 
+-- En este ejemplo escribo una cadena de caracteres en el fichero prueba.txt  
+ -- Cadena a escribir 
+cadena := 'Prueba de escritura en fichero usando el paquete utl_file';  
+-- Abro fichero para escritura  (Write) 
+file := UTL_FILE.FOPEN(‘PRUEBA','prueba.txt','W',256);  
+-- Escribo en el fichero 
+ UTL_FILE.PUT(file,cadena);        							
+-- Cierro fichero   
+UTL_FILE.FCLOSE(file); 
+dbms_output.put_line('Escritura correcta'); 
+ END;
+
+Uso EN SQL PLUS
+
+SQL> SET SERVEROUTPUT ON
+SQL> execute escribir_file; 
+Escritura correcta
+Comunicaciones en Oracle, conexiones cliente tnsnames.ora.
+Todos los PC, portátiles, servidores, etc. que tengan que conectarse a una base de datos Oracle tienen que tener instalado el cliente Oracle.
+Una vez tenemos instalado el cliente vamos a añadir una nueva cadena de conexión  en el archivo tnsnames.ora, vamos a ver con detalle una cadena de conexión
+BPRUEBA01_LIMAD001 = 
+       (DESCRIPTION = 
+           (ADDRESS = (PROTOCOL = TCP)(HOST = limad001)(PORT = 1521)) 
+           (CONNECT_DATA = 
+                (SID = BPRUEBA01) 
+          ) 
+      )
+BPRUEBA01_LIMAD001 – Alias o descriptor de la cadena de conexión, podemos utilizar el nombre que deseemos pero una buena practica es utilizar el nombre de la base datos y el nombre del servidor donde esta. No se pueden repetir los alias en un tnsnames.ora pero podemos tener todas las cadenas de conexión que queramos apuntado a la misma base de datos siempre y cuando el alias sea diferente.
+HOST, nombre del servidor donde esta la base de datos.
+PORT, puerto TCP que hemos configurado en el listener de la base de de datos a la que vamos a conextar.
+SID, nombre de la instancia de la base de datos.
+Prueba de conexión.
+ Para probar nuestra nueva conexión tenemos la herramienta tnsping proporcionada por Oracle.
+JAVASCRIPT
+¿Cómo utilizar las variables y funciones de Javascript?
+
+Para mostrar la información que devuelve una variable o ejecutar una función puede hacerse de varias formas:
+Usar "document.write"
+
+1- Escribiendo el resultado en la página mediante document.write cuyas opciones aparecen más abajo, por ejemplo de la siguiente forma se escribe la dirección URL de la página actual.
+<script type="text/javascript">document.write(location.href)</script> 
+http://norfipc.com/inf/javascript-lista-variables-funciones-usar-paginas-web.html
+La función document.write tiene la gran desventaja que si se llama mediante un evento (un link, un botón, etc.) después de estar la página cargada, la destrozará y escribirá el resultado de la variable o la información en una nueva ventana.
+Usar "innerHTML"
+
+2- Otra forma es escribiendo de forma dinámica mediante innerHTML, método un poco más sofisticado pero que permite agregar y cambiar el contenido de la página, respetando los otros elementos que la componen.
+Usar cuadros de alertas
+
+3- Utilizando alertas, método sencillo y practico que abre una pequeña ventana o cuadro de dialogo donde aparece el resultado de la variable y el texto que se adicione, es el método que más se utiliza en los ejemplos que se incluyen en esta página para una mejor comprensión.
+Para crear una alerta hazlo de cualquiera de las siguientes formas:
+
+Mediante un link
+<a href="javascript:alert(VARIABLE);">NombreLink</a>
+<a href="javascript:alert('texto'+VARIABLE);">NombreLink</a>
+<a href="javascript:alert('texto+VARIABLE+'texto');">NombreLink</a>
+
+Para impedir que al presionar el link el navegador salga de la página actual, se utiliza void 0 al final, por ejemplo: 
+<a href="javascript:alert(VARIABLE);void 0">NombreLink</a> 
+
+Mediante un boton
+<input type="button" value="NombreBoton" onclick="alert(VARIABLE);" />
+<input type="button" value="NombreBoton" onclick="alert('texto'+VARIABLE);" />
+<input type="button" value="NombreBoton" onclick="alert('texto+VARIABLE+'texto');" /> 
+
+Mediante otros eventos
+De forma similar se pueden ejecutar funciones mediante cualquier evento (acciones que pueden ser detectadas por Javascript).
+El más utilizado de ellos es onclick, pero existen varios, todos ellos se pueden utilizar en cualquier elemento HTML.
+Algunos ejemplos: 
+<a href="javascript:FUNCIÓN;">NombreLink</a>
+<input type="button" value="NombreBoton" onclick="FUNCIÓN;" />
+<div onclick="FUNCIÓN;">Texto</div> 
+Sintaxis
+Las normas básicas que definen la sintaxis de JavaScript son las siguientes:
+▪ No se tienen en cuenta los espacios en blanco y las nuevas líneas: como sucede con XHTML, el intérprete de JavaScript ignora cualquier espacio en blanco sobrante, por lo que el código se puede ordenar de forma adecuada para entenderlo mejor (tabulando las líneas, añadiendo espacios, creando nuevas líneas, etc.)
+▪ Se distinguen las mayúsculas y minúsculas: al igual que sucede con la sintaxis de las etiquetas y elementos XHTML. Sin embargo, si en una página XHTML se utilizan indistintamente mayúsculas y minúsculas, la página se visualiza correctamente, siendo el único problema la no validación de la página. En cambio, si en JavaScript se intercambian mayúsculas y minúsculas el script no funciona.
+
+▪ No se define el tipo de las variables: al crear una variable, no es necesario indicar el tipo de dato que almacenará. De esta forma, una misma variable puede almacenar diferentes tipos de datos durante la ejecución del script.
+
+▪ No es necesario terminar cada sentencia con el carácter de punto y coma(;): en la mayoría de lenguajes de programación, es obligatorio terminar cada sentencia con el carácter ;. Aunque JavaScript no obliga a hacerlo, es conveniente seguir la tradición de terminar cada sentencia con el carácter del punto y coma(;).
+▪ Se pueden incluir comentarios: los comentarios se utilizan para añadir información en el código fuente del programa. Aunque el contenido de los comentarios no se visualiza por pantalla, si que se envía al navegador del usuario junto con el resto del script, por lo que es necesario extremar las precauciones sobre la información incluida en los comentarios.
+
+DOM transforma todos los documentos XHTML en un conjunto de elementos llamados nodos, que están interconectados y que representan los contenidos de las páginas web y las relaciones entre ellos. Por su aspecto, la unión de todos los nodos se llama “árbol de nodos”.
+
+La raíz del árbol de nodos de cualquier página XHTML siempre es la misma: un nodo de tipo especial denominado “Documento”.
+
+A partir de ese nodo raíz, cada etiqueta XHTML se transforma en un nodo de tipo “Elemento”. La conversión de etiquetas en nodos se realiza de forma jerárquica. De esta forma, del nodo raíz solamente pueden derivar los nodos HEAD y BODY. A partir de esta derivación inicial, cada etiqueta XHTML se transforma en un nodo que deriva del nodo correspondiente a su “etiqueta padre”.
+Ámbito de las variables
+•	Si una variable se declara fuera de cualquier función, automáticamente se transforma en variable global independientemente de si se define utilizando la palabra reservada var o no. 
+•	Si en el interior de una función, las variables se declaran mediante var se consideran locales y las variables que no se han declarado mediante var, se transforman automáticamente en variables globales.
+•	Dentro de la función, la variable local tiene más prioridad que la variable global del mismo nombre, pero solamente dentro de la función.
+Sentencias break y continue
+Las sentencias break y continue permiten manipular el comportamiento normal de los bucles for para detener el bucle o para saltarse algunas repeticiones.
+Si el programa llega a una instrucción de tipo break;  sale inmediatamente del bucle y continúa ejecutando el resto de instrucciones que se encuentran fuera del bucle for.
+La utilidad de continue es que permite utilizar el bucle for para filtrar los resultados en función de algunas condiciones o cuando el valor de alguna variable coincide con un valor determinado.
+Árbol de nodos
+Los navegadores web transforman automáticamente todas las páginas web en una estructura más eficiente de manipular. Esta transformación la realizan todos los navegadores de forma automática y nos permite utilizar las herramientas de DOM de forma muy sencilla.
+DOM transforma todos los documentos XHTML en un conjunto de elementos llamados nodos, que están interconectados y que representan los contenidos de las páginas web y las relaciones entre ellos. Por su aspecto, la unión de todos los nodos se llama “árbol de nodos”.
+La raíz del árbol de nodos de cualquier página XHTML siempre es la misma: un nodo de tipo especial denominado “Documento”.
+La transformación de las etiquetas XHTML habituales genera dos nodos: el primero es el nodo de tipo “Elemento” (correspondiente a la propia etiqueta XHTML) y el segundo es un nodo de tipo “Texto” que contiene el texto encerrado por esa etiqueta XHTML.
+Así, la siguiente etiqueta XHTML:
+<title>Página sencilla</title>
+Genera los siguientes dos nodos:
+Elemento: title
+Texto: Página sencilla
+
+La transformación automática de la página en un árbol de nodos siempre sigue las mismas reglas:
+•	Las etiquetas XHTML se transforman en dos nodos: el primero es la propia etiqueta y el segundo nodo es hijo del primero y consiste en el contenido textual de la etiqueta.
+•	Si una etiqueta XHTML se encuentra dentro de otra, se sigue el mismo procedimiento anterior, pero los nodos generados serán nodos hijo de su etiqueta padre.
+Tipos de nodos
+La especificación completa de DOM define 12 tipos de nodos, aunque las páginas XHTML habituales se pueden manipular manejando solamente cuatro o cinco tipos de nodos:
+▪ Document, nodo raíz del que derivan todos los demás nodos del árbol.
+▪ Element, representa cada una de las etiquetas XHTML. Se trata del único nodo que puede contener atributos y el único del que pueden derivar otros nodos.
+▪ Attr, se define un nodo de este tipo para representar cada uno de los atributos de las etiquetas XHTML, es decir, uno por cada par atributo=valor.
+▪ Text, nodo que contiene el texto encerrado por una etiqueta XHTML.
+▪ Comment, representa los comentarios incluidos en la página XHTML
+
+Acceso directo a los nodos.
+DOM proporciona dos métodos alternativos para acceder a un nodo específico: acceso a través de sus nodos padre y acceso directo.
+getElementsByTagName()
+La función getElementsByTagName(nombreEtiqueta) obtiene todos los elementos de la página XHTML cuyo tag sea igual que el parámetro que se le pasa a la función. Ejemplo: obtiene todos los párrafos de una página XHTML: var parrafos = document.getElementsByTagName("p")
+
+El valor devuelto es un array de nodos DOM, no un array de cadenas de texto o un array de objetos normales, De este modo, se puede obtener el primer párrafo de la página de la siguiente manera:
+var primerParrafo = parrafos[0];
+
+De la misma forma, se podrían recorrer todos los párrafos de la página con el siguiente código:
+
+for(var i=0; i<parrafos.length; i++) {
+var parrafo = parrafos[i];
+}
+getElementsByName()
+La función getElementsByName() es similar a la anterior, pero en este caso se buscan los elementos cuyo atributo name sea igual al parámetro proporcionado
+getElementById()
+La función getElementById() devuelve el elemento XHTML cuyo atributo id coincide con el parámetro indicado en la función
+Creación de elementos XHTML simples
+Crear y añadir a la página un nuevo elemento XHTML sencillo consta de cuatro pasos diferentes:
+1. Creación de un nodo de tipo Element que represente al elemento.
+2. Creación de un nodo de tipo Text que represente el contenido del elemento.
+3. Añadir el nodo Text como nodo hijo del nodo Element.
+4. Añadir el nodo Element a la página, en forma de nodo hijo del nodo correspondiente al lugar en el que se quiere insertar el elemento.
+
+De este modo, si se quiere añadir un párrafo simple al final de una página XHTML, es necesario incluir el siguiente código JavaScript:
+
+// Crear nodo de tipo Element
+var parrafo = document.createElement("p");
+// Crear nodo de tipo Text
+var contenido = document.createTextNode("Hola Mundo!");
+// Añadir el nodo Text como hijo del nodo Element
+parrafo.appendChild(contenido);
+// Añadir el nodo Element como hijo de la pagina
+document.body.appendChild(parrafo);
+
+El proceso de creación de nuevos nodos puede llegar a ser tedioso, ya que implica la utilización
+de tres funciones DOM:
+▪ createElement(etiqueta): crea un nodo de tipo Element que representa al elemento XHTML cuya etiqueta se pasa como parámetro.
+▪ createTextNode(contenido): crea un nodo de tipo Text que almacena el contenido textual de los elementos XHTML.
+▪ nodoPadre.appendChild(nodoHijo): añade un nodo como hijo de otro nodo. Se debe utilizar al menos dos veces con los nodos habituales: en primer lugar se añade el nodo Text como hijo del nodo Element y a continuación se añade el nodo Element como hijo de algún nodo de la página.
+
+Eliminación de nodos
+La función removeChild() requiere como parámetro el nodo que se va a eliminar. Además, esta función debe ser invocada desde el elemento padre de ese nodo que se quiere eliminar
+
+var parrafo = document.getElementById("provisional");
+parrafo.parentNode.removeChild(parrafo);
+<p id="provisional">...</p>
+
+Acceso directo a los atributos XHTML
+Mediante DOM, es posible acceder de forma sencilla a todos los atributos XHTML y todas las propiedades CSS de cualquier elemento de la página.
+Los atributos XHTML de los elementos de la página se transforman automáticamente en propiedades de los nodos. Para acceder a su valor, simplemente se indica el nombre del atributo XHTML detrás del nombre del nodo.
+
+Para obtener el valor de cualquier propiedad CSS del nodo, se debe utilizar el atributo style. El siguiente ejemplo obtiene el valor de la propiedad margin de la imagen:
+
+var imagen = document.getElementById("imagen");
+alert(imagen.style.margin);
+<img id="imagen" style="margin:0; border:0;" src="logo.png" />
+
+Si el nombre de una propiedad CSS es compuesto, se accede a su valor modificando ligeramente su nombre:
+
+var parrafo = document.getElementById("parrafo");
+alert(parrafo.style.fontWeight); // muestra "bold"
+<p id="parrafo" style="font-weight: bold;">...</p>
+
+El único atributo XHTML que no tiene el mismo nombre en XHTML y en las propiedades DOM es el atributo class. Como la palabra class está reservada por JavaScript, no es posible utilizarla para acceder al atributo class del elemento XHTML. En su lugar, DOM utiliza el nombre className para acceder al atributo class de XHTML:
+
+var parrafo = document.getElementById("parrafo");
+alert(parrafo.class); // muestra "undefined"
+alert(parrafo.className); // muestra "normal"
+<p id="parrafo" class="normal">...</p>
+Eventos
+JavaScript permite asignar una función a cada uno de los eventos. De esta forma, cuando se produce cualquier evento, JavaScript ejecuta su función asociada. Este tipo de funciones se denominan “event handlers” en inglés y suelen traducirse por “manejadores de eventos”.
+
+Este modelo simple de eventos se introdujo para la versión 4 del estándar HTML y se considera parte del nivel más básico de DOM. Aunque sus características son limitadas, es el único modelo que es compatible en todos los navegadores y por tanto, el único que permite crear aplicaciones que funcionan de la misma manera en todos los navegadores.
+
+Modelo de eventos estándar Las versiones más avanzadas del estándar DOM (DOM nivel 2) definen un modelo de eventos completamente nuevo y mucho más poderoso que el original. Todos los navegadores modernos lo incluyen, salvo Internet Explorer.
+Modelo básico de eventos
+Tipos de eventos
+En este modelo, cada elemento o etiqueta XHTML define su propia lista de posibles eventos que se le pueden asignar. Un mismo tipo de evento (por ejemplo, pinchar el botón izquierdo del ratón) puede estar definido para varios elementos XHTML diferentes y un mismo elemento XHTML puede tener asociados varios eventos diferentes.
+
+La siguiente tabla resume los eventos más importantes definidos por JavaScript:
+
+ 
+ 
+
+
+Algunos eventos de la tabla anterior (onclick, onkeydown, onkeypress, onreset, onsubmit) permiten evitar la “acción por defecto” de ese evento.
+El evento onload es uno de los más utilizados ya que, como se vio en el capítulo de DOM, las funciones que permiten acceder y manipular los nodos del árbol DOM solamente están disponibles cuando la página se ha cargado completamente.
+Manejadores de eventos y variable this
+En los eventos, se puede utilizar la variable this para referirse al elemento XHTML que ha provocado el evento.  Esta variable es muy útil para ejemplos como el siguiente: Cuando el usuario pasa el ratón por encima del <div>, el color del borde se muestra de color negro. Cuando el ratón sale del <div>, se vuelve a mostrar el borde con el color gris claro original.
+
+Si no se utiliza la variable this, el código necesario para modificar el color de los bordes, sería el siguiente:
+
+<div id="contenidos" style="width:150px; height:60px; border:thin solid silver" onmouseover="document.getElementById('contenidos').style.borderColor='black';" onmouseout="document.getElementById('contenidos').style.borderColor='silver';">
+Sección de contenidos...</div>
+
+El código anterior es demasiado largo y demasiado propenso a cometer errores. Dentro del código de un evento, JavaScript crea automáticamente la variable this, que hace referencia al elemento XHTML que ha provocado el evento. Así, el ejemplo anterior se puede reescribir de la siguiente manera:
+
+<div id="contenidos" style="width:150px; height:60px; border:thin solid silver" onmouseover="this.style.borderColor='black';" onmouseout="this.style.borderColor='silver';">
+Sección de contenidos... </div>
+
+
+
+Manejadores de eventos semánticos
+La técnica de los manejadores semánticos consiste en:
+1. Asignar un identificador único al elemento XHTML mediante el atributo id.
+2. Crear una función de JavaScript encargada de manejar el evento.
+3. Asignar la función externa al evento correspondiente en el elemento deseado.
+
+El último paso es la clave de esta técnica. En primer lugar, se obtiene el elemento al que se desea asociar la función externa:
+document.getElementById("pinchable");
+A continuación, se utiliza una propiedad del elemento con el mismo nombre que el evento que se quiere manejar. En este caso, la propiedad es onclick:
+
+document.getElementById("pinchable").onclick = ...
+Por último, se asigna la función externa mediante su nombre sin paréntesis. Lo más importante (y la causa más común de errores) es indicar solamente el nombre de la función, es decir, prescindir de los paréntesis al asignar la función:
+
+document.getElementById("pinchable").onclick = muestraMensaje;
+
+Si se añaden los paréntesis después del nombre de la función, en realidad se está ejecutando la función y guardando el valor devuelto por la función en la propiedad onclick de elemento.
+
+// Asignar una función externa a un evento de un elemento
+document.getElementById("pinchable").onclick = muestraMensaje;
+// Ejecutar una función y guardar su resultado en una propiedad de un elemento
+document.getElementById("pinchable").onclick = muestraMensaje();
+
+El único inconveniente de este método es que la página se debe cargar completamente antes de que se puedan utilizar las funciones DOM que asignan los manejadores a los elementos XHTML. Una de las formas más sencillas de asegurar que cierto código se va a ejecutar después de que la página se cargue por completo es utilizar el evento onload:
+
+window.onload = function() {
+document.getElementById("pinchable").onclick = muestraMensaje;
+}
+Obteniendo información del evento (objeto EVENT)
+
+El caso más habitual en el que es necesario conocer información adicional sobre el evento asociados al teclado por ejemplo para diferenciar las teclas normales de las teclas especiales (ENTER, tabulador, Alt, Ctrl., etc.).
+JavaScript permite obtener información sobre el ratón y el teclado mediante un objeto especial llamado event. Desafortunadamente, los diferentes navegadores presentan diferencias en el tratamiento de la información sobre los eventos.
+La principal diferencia reside en la forma en la que se obtiene el objeto event. Internet Explorer considera que este objeto forma parte del objeto window y el resto de navegadores lo consideran como el único argumento que tienen las funciones manejadoras de eventos.
+Todos los navegadores modernos excepto Internet Explorer crean mágicamente y de forma automática un argumento que se pasa a la función manejadora, por lo que no es necesario incluirlo en la llamada a la función manejadora. De esta forma, para utilizar este “argumento mágico”, sólo es necesario asignarle un nombre, ya que los navegadores lo crean automáticamente.
+En resumen, en los navegadores tipo Internet Explorer, el objeto event se obtiene directamente mediante:	 var evento = window.event;
+Por otra parte, en el resto de navegadores, el objeto event se obtie|ne mágicamente a partir del argumento que el navegador crea automáticamente:
+function manejadorEventos(elEvento) { var evento = elEvento;}
+Una vez obtenido el objeto event, ya se puede acceder a toda la información relacionada con el evento, que depende del tipo de evento producido
+Información sobre el evento
+La propiedad type indica el tipo de evento producido, lo que es útil cuando una misma función se utiliza para manejar varios eventos:
+var tipo = evento.type;
+La propiedad type devuelve el tipo de evento producido, que es igual al nombre del evento pero sin el prefijo on.
+Mediante esta propiedad, se puede rehacer de forma más sencilla el ejemplo anterior en el que se resaltaba una sección de contenidos al pasar el ratón por encima:
+
+function resalta(elEvento) {
+var evento = elEvento || window.event;
+switch(evento.type) {
+case 'mouseover':
+this.style.borderColor = 'black';
+break;
+case 'mouseout':
+this.style.borderColor = 'silver';
+break;
+}
+}
+window.onload = function() {
+document.getElementById("seccion").onmouseover = resalta;
+document.getElementById("seccion").onmouseout = resalta;
+}
+<div id="seccion" style="width:150px; height:60px; border:thin solid silver">
+Sección de contenidos...
+</div>
+
+Información sobre los eventos de teclado
+Los eventos relacionados con el teclado son los más incompatibles entre diferentes navegadores y por tanto, los más difíciles de manejar
+Además, existen tres eventos diferentes para las pulsaciones de las teclas (onkeyup, onkeypress y onkeydown). Por último, existen dos tipos de teclas: las teclas normales (como letras, números y símbolos normales) y las teclas especiales (como ENTER, Alt, Shift, etc. 
+Cuando un usuario pulsa una tecla normal, se producen tres eventos seguidos y en este orden: onkeydown, onkeypress y onkeyup. El evento onkeydown se corresponde con el hecho de pulsar una tecla y no soltarla; el evento onkeypress es la propia pulsación de la tecla y el evento onkeyup hace referencia al hecho de soltar una tecla que estaba pulsada.
+La forma más sencilla de obtener la información sobre la tecla que se ha pulsado es mediante el evento onkeypress.
+Lista de las variables y funciones de Javascript
+Lista de las variables y funciones de Javascript compatibles con la mayor parte de los navegadores y más utilizadas y útiles en las páginas web. Están agrupadas por su clasificación. 
+Los vínculos abren cuadros de diálogos o alertas, para mostrar el resultado de la variable o ejecutar la función y evitar salir de la página actual.
+Cualquiera de las variables puedes copiarla y pegarla en el "Intérprete" más arriba para probarla.
+Document Object
+Al ser cargada una página web por el navegador, Windows la considera como un objeto, por lo que las siguientes variables devuelven información como si la página fuera un objeto.
+document.title
+Muestra el título de la página actual
+document.URL
+Muestra la dirección URL de la página actual
+document.referrer
+Muestra la dirección URL de la página que dirigió a la actual
+document.lastModified
+Fecha de la última modificación de la página
+document.domain
+Muestra el nombre de dominio del sitio web
+document.cookie
+Muestra las cookies guardadas por este sitio web en tu equipo
+document.links.length
+Muestra el número de links en la página
+document.links[0].innerHTML
+Muestra el nombre del primer link
+document.links[1].innerHTML
+Muestra el nombre del segundo link
+document.anchors.length
+Número de anchors en la página
+document.forms.length
+Número de formas en la página
+document.forms[0].name
+Muestra el nombre de la primera forma
+document.images.length
+Número de imágenes en la página
+document.images[0].id
+Muestra la identidad (ID) de la primera imagen
+document.getElementById()
+Permite identificar un elemento en una página por su identidad (ID), entonces ejecuta una acción, en este caso se emplea: 
+document.getElementById('test').innerHTML='Hola';void 0 
+(test es un DIV o contenedor con dicha identidad en la página, innerHTML='Hola' escribe el texto indicado y void 0 se utiliza para evitar que el navegador cargue una nueva página).
+document.write()	Escribe texto, código o el resultado de una variable en una página, se usa de las siguientes formas: 
+document.write('texto')
+document.write(variable)
+document.write('texto'+variable)
+document.write('texto'+variable+'texto')
+Navigator Object
+Las siguientes variables devuelven información del navegador usado para cargar la página.
+navigator.appCodeName
+Devuelve el código del nombre del navegador web con que se carga la página
+navigator.appName
+Devuelve el nombre del navegador
+navigator.appVersion
+Versión del navegador
+navigator.cookieEnabled
+Comprueba si están habilitadas las cookies en el navegador (true=Si, false=No)
+navigator.platform
+Plataforma del navegador
+navigator.userAgent
+Agente de usuario enviado por el navegador al servidor
+navigator.javaEnabled
+Se comprueba si está habilitada Java en el navegador (true=Si, false=No)
+
+Location Object
+location.host
+Devuelve el nombre del host de una dirección web
+location.hostname
+Similar al anterior
+location.href
+Devuelve la dirección URL completa
+location.pathname
+Devuelve solo la ruta relativa en el servidor a la pagina
+location.port
+Devuelve el número del puerto usado
+location.protocol
+Muestra el protocolo usado (http, https, file, ftp, etc.)
+location.reload()
+Vuelve a cargar la página (window.location.reload(true))
+location.href
+Encadenando location.href se refresca el contenido de la página (vuelve a cargarla), en este caso se usa: 
+location.href=location.href
+Ver el código fuente de la página
+Para eso se encadena de la siguiente forma: 
+location.href = 'view-source:' + window.location.href
+(No funciona en Internet Explorer)
+History Object
+history.length
+Devuelve la cantidad de direcciones URL en la lista del historial
+history.back()
+Página anterior en el historial
+history.forward()
+Página siguiente en el historial
+history.go()
+Carga una página determinada del historial, en este caso se emplea: 
+history.go(0)
+por lo que recarga la página actual, similar a usar la tecla F5 
+
+Screen Object
+screen.height
+Devuelve la altura total de la pantalla en pixeles
+screen.width
+Devuelve el ancho total de la pantalla en pixeles
+screen.availHeight
+Devuelve la altura de la pantalla disponible en pixeles
+screen.availWidth
+Devuelve el ancho de la pantalla disponible en pixeles
+screen.colorDepth
+Profundidad de color de la pantalla para mostrar imágenes
+screen.pixelDepth
+Resolución del color en bits por pixel de la pantalla
+Window Object
+window.onload	Ejecuta una función o varias inmediatamente después de que termine la carga de la página por completo, en este caso se emplea una alerta que se muestra al entrar a la página. El código usado es:
+<script type="text/javascript">
+window.onload=alert('Hola, Bienvenido a Javascript')
+</script> 
+Este código se debe insertar en el final de la página, justo antes del cierre de la etiqueta </body> 
+window.parent.location
+Devuelve la dirección URL de la página actual
+window.parent.location
+Conduce a una dirección web, en este ejemplo: 
+window.parent.location='http://norfipc.com'
+window.alert()
+Muestra una ventana de alerta con un mensaje: 
+window.alert('Mensaje')
+window.confirm()
+Confirmación, muestra un cuadro de dialogo con un mensaje, un botón Aceptar y uno Cancelar: 
+window.confirm('Desea?....')
+Generalmente se usa encadenada con otra función 
+window.prompt()
+Muestra un cuadro de dialogo que inquiere al usuario por una respuesta, se usa: 
+window.prompt('Mensaje','Quiere..?')
+Al igual que la anterior se usa con una función que se ejecuta en caso del usuario oprimir el botón Aceptar 
+window.open()	Abre una nueva ventana o pestaña según como se emplee, ninguna de las variantes funciona en el navegador Internet Explorer por cuestiones de seguridad.
+window.open()
+En este ejemplo se abre una nueva ventana llamada "new", para eso se emplea el siguiente código: 
+nv=window.open('','new','width=344,height=444,left=50,top=50')
+Mas información sobre todas las opciones de window.open() en la siguiente página: Como abrir links de una página web en una nueva ventana con Internet Explorer y otros navegadores. 
+
+close()
+Cierra una ventana, en este ejemplo cierra la ventana abierta anteriormente: 
+nv.close()
+window.open()
+En este ejemplo se emplea window.open() para abrir una nueva pestaña
+close()
+Cierra la pestaña abierta anteriormente
+top.close()
+Cerrar pestaña
+window.name
+Muestra el nombre de una ventana, se emplea: 
+nv=window.open('','new','width=344,height=444'); nv.document.write('Esta ventana se llama: ' + nv.name) 
+window.innerHeight
+Muestra la altura en pixeles del tamaño de la ventana del navegador (No es compatible con Internet Explorer)
+window.innerWidth
+Muestra el ancho en pixeles del tamaño de la ventana del navegador (No es compatible con Internet Explorer)
+window.print()
+Imprime el contenido de la ventana.
+Más información sobre las opciones para utilizar window.print(), puedes leerla en la siguiente página: Como imprimir solo un área, parte o sección de una página web 
+
+window.resizeBy()
+Este método cambia de tamaño la ventana del navegador, mueve la esquina derecha inferior de la ventana, la cantidad de pixeles que se determine, ya sea positiva un incremento o negativa una reducción, la esquina superior izquierda permanecerá inmóvil. En este ejemplo se emplea: 
+window.resizeBy(100,100)
+lo que incrementa en 100 pixeles su tamaño en cada eje (no funciona en Opera y Chrome).
+window.resizeTo()
+Ajusta el tamaño de la ventana al número de pixeles que se determine, en este ejemplo se emplea: 
+window.resizeTo(1000,800)
+window.scrollBy()
+Desplaza el contenido de la ventana en un determinado número de pixeles, hacia arriba o hacia abajo según se establezca de forma positiva o negativa, en este ejemplo se emplea: 
+window.scrollBy(50,-50)
+
+Combinando la function window.scrollBy con setTimeout se puede hacer que la página vaya desplazándose continuamente, se puede iniciar la función al cargar la página mediante el evento onload o con un vínculo de la siguiente forma: 
+<script type="text/javascript">
+function pageScroll() {window.scrollBy(0,30);
+scrolldelay = setTimeout('pageScroll()',800);}
+function stopScroll() {clearTimeout(scrolldelay);}
+</script>
+
+<a href="javascript:pageScroll()">Scroll</a>
+<a href="javascript:stopScroll()">STOP</a> 
+Scroll STOP 
+
+window.scrollTo()
+Dezplaza el contenido de la ventana a unas coordenadas específicas, en este caso se usa: 
+window.scrollTo(750,650)
+window.moveTo()
+Mueve la ventana del navegador a una posición específica en la pantalla definida en pixeles, en este caso: 
+window.moveTo(222,222)
+window.moveBy()
+Mueve la ventana del navegador a una ubicación en relación con su posición actual determinada en pixeles, en este caso: 
+window.moveBy(200,300)
+window.screenLeft
+Muestra el número de pixeles distantes a la pantalla, del borde izquierdo de la ventana al borde izquierdo de la pantalla (Solo Internet Explorer)
+window.screenTop
+Muestra el número de pixeles distantes a la pantalla, del borde superior de la ventana al borde superior de la pantalla (Solo Internet Explorer)
+window.screenX
+Muestra el número de pixeles distantes a la pantalla, del borde izquierdo de la ventana al borde izquierdo de la pantalla (Firefox y Google Chrome)
+window.screenY
+Muestra el número de pixeles distantes a la pantalla, del borde superior de la ventana al borde superior de la pantalla (Firefox y Google Chrome)
+
+document.documentElement.clientHeight
+Muestra la altura en pixeles del tamaño de la ventana del navegador (Todos los navegadores)
+document.documentElement.clientWidth
+Muestra el ancho en pixeles del tamaño de la ventana del navegador (Todos los navegadores)
+
+Mensajes de error de Javascript
+
+En ocasiones al solicitar el resultado de una variable Javascript devuelve los siguientes mensajes predeterminados: 
+NaN = "Not-a-Number", significa que el resultado no es un número.
+Undefined = Indica que a la variable no se le ha asignado ningún valor.
+Infinity = Significa un valor imposible de representar.
+
+Herramientas
+Bookmarklet para probar funciones y variables de Javascript, no funciona en Internet Explorer. 
+En otros navegadores abre una pequeña ventana a la izquierda donde se puede escribir o pegar una variable o función y probarla.
+Arrástralo a la barra de marcadores del navegador para guardarlo y usarlo posteriormente.
+JavaScript Sintaxis
+Los literales de cadena se pueden escribir con comillas simples o dobles:
+Los literales de objetos define un objeto:
+{firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"} 
+Los identificadores pueden contener letras, dígitos, guiones y símbolos de dólar, pero no pueden comenzar con un número.
+JavaScript es sensible a mayúsculas
+JavaScript no interpreta Var como var
+JavaScript Declaraciones
+En HTML, JavaScript son declaraciones de "comandos" al navegador.
+Normalmente se agrega un punto y coma al final de cada sentencia ejecutable. 
+El uso de punto y coma también hace que sea posible escribir muchas declaraciones en una misma línea. 
+Usted puede saltar una línea de código dentro de una cadena de texto con una barra invertida:
+Ejemplo
+document.getElementById("demo").innerHTML = "Hello \
+    Dolly!";
+JavaScript Variables
+Inicie la declaración con var y separar las variables por comas (,)
+var lastName = "Doe", age = 30, job = "carpenter"; 
+Incorrecto:
+var lastName = "Doe"; age = 30; job = "carpenter"; 
+Correcto:
+var lastName = "Doe"; var age = 30; var job = "carpenter"; 
+El operador typeof
+Puede utilizar el operador typeof JavaScript para encontrar el tipo de una variable JavaScript
+Ejemplo
+typeof "John"                 // Returns string 
+typeof 3.14                   // Returns number
+typeof false                  // Returns boolean
+typeof [1,2,3,4]              // Returns object
+typeof {name:'John', age:34}  // Returns object 
+JavaScript Objetos
+Propiedades de los objetos y métodos
+Propiedades son los valores asociados a los objetos.
+Los métodos son acciones que los objetos pueden realizar.
+
+•	Puede acceder a las propiedades de los objetos de dos maneras: 
+Ejemplo
+person.lastName;
+person["lastName"]; 
+JavaScript Alcance
+Una variable declarada fuera de una función, se convierte en GLOBAL
+Se eliminan las variables globales cuando se cierra la página.
+JavaScript Eventos
+Aquí está una lista de algunos eventos comunes de HTML:
+Evento	Descripción
+onchange	Un elemento HTML se ha cambiado
+onclick	El usuario hace clic en un elemento HTML
+onmouseover	El usuario mueve el ratón sobre un elemento HTML
+onmouseout	El usuario mueve el ratón fuera de un elemento HTML
+onkeydown	El usuario pulsa una tecla del teclado
+onload	El navegador ha terminado de cargar la página
+Onfocus	Un elemento del formulario toma el foco
+Onchange	Un elemento del formulario pierde el foco
+onkeyPress	El usuario pulsa una tecla (para elementos de formulario y body)
+
+
+JavaScript métodos de cadenas de texto
+Usted puede utilizar la función isNaN en JavaScript () para averiguar si un valor es un número.
+JavaScript Métodos de matriz
+•	El valueOf () Devuelve una matriz como una cadena, en matrices de JavaScript, valueOf () y toString () son iguales
+•	El join () método también se une a todos los elementos de la matriz en una cadena.
+Se comporta como toString (), pero se puede especificar el separador:
+•	El método pop ()elimina el último elemento de una matriz:
+•	El método  push ()añade un nuevo elemento a una matriz (al final):
+•	El método shift()  elimina el primer elemento de una matriz, y "desplaza" todos los demás elementos de un lugar hacia abajo.
+•	El método unshift () añade un nuevo elemento a un conjunto (al principio),
+•	El método splice() se puede usar para agregar nuevos elementos a un array:
+El primer parámetro (2) define la posición donde deben nuevos elementos añadidos (empalmado en).
+El segundo parámetro (0) define el número de elementos debe ser removido .
+El resto de los parámetros ("Lemon", "Kiwi") define los nuevos elementos que se añaden
+HTML5
+HTML Imágenes
+<html>
+<body>
+ <h2>Spectacular Mountains</h2>
+ <img src="pic_mountain.jpg" alt="Mountain View" style="width:304px;height:228px">
+</body>
+</html>
+•	Siempre especifique tamaño de la imagen. Si el tamaño es desconocido, la página parpadeará mientras se carga la imagen.
+•	La etiqueta <img> está vacío, contiene atributos solamente, y no tiene una etiqueta de cierre.
+•	El alt atributo específica un texto alternativo para la imagen, si no se puede mostrar.
+•	El valor del atributo alt debe describir la imagen en palabras:
+•	Es el atributo alt es requerido. Una página web no se valida correctamente sin ella.
+•	Se puede utilizar el atributo style de <img>  para especificar la height y la width de una imagen.
+•	 Alternativamente, puede utilizar los atributos  width y height  de <img>  
+•	Le recomendamos que utilice el atributo de STYLE para anchura  y largo
+•	<style>
+  img { width:100%; }
+</style>
+•	Si un navegador no puede encontrar una imagen, se mostrará un icono de enlace roto:  
+•	Algunos sitios web almacenan sus imágenes en servidores de imágenes, En realidad, se puede acceder a las imágenes desde cualquier dirección web en el mundo
+•	Cargar imágenes lleva tiempo. Las imágenes grandes pueden ralentizar su página. Utilice imágenes cuidadosamente
+HTML Tablas
+•	Una tabla HTML con el atributo border
+•	Si no especifica un borde de la tabla, se mostrará sin fronteras.
+< table border="1" style="width:100%">
+•	Es mejor usar CSS.  Para los bordes Ejemplo:
+table, th, td {
+    border: 1px solid black;
+}
+
+•	Recuerde que debe definir las fronteras de la tabla y las celdas de la tabla.
+•	 Una tabla HTML con bordes cerrados. 	Ejemplo:
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+•	Para establecer el relleno, utilice la propiedad padding de CSS:
+th,td {
+    padding: 15px;
+}
+•	Para la alinear a la izquierda los encabezados de la tabla, utilice la propiedad CSS text-align 
+•	Para agregar un título a una tabla, utilice el tag  <caption> </caption>, debe insertarse inmediatamente después de la etiqueta <table>.
+
+VISUAL BASIC
+
+FUNCION Kill 
+Elimina archivos desde un disco
+OPERAR CON FICHEROS
+Es frecuente necesitar guardar información en ficheros o recuperar información desde ficheros con Visual Basic. 
+
+Para las versiones menos recientes de Visual Basic: describimos a continuación cómo debe procederse.
+
+La sintaxis que emplearemos será la siguiente:
+
+Open [ruta de acceso] For [tipo de acceso] As [número de archivo]
+.
+.
+.
+Close
+
+
+Open: es la instrucción que da lugar a la apertura del fichero.
+Ruta de acceso: es la ruta del archivo que queremos abrir para manipular. Se entiende que dicho archivo se encuentra en una unidad de disco (por ejemplo C:\problema3.dat corresponde al fichero problema3.dat que se encuentra en la unidad de disco C:). Si el archivo no existe al tratar de abrirlo para escribir datos será creado automáticamente, pero si tratamos de abrirlo para extraer datos aparecerá el mensaje “Error 53: Archivo no encontrado”.
+For [tipo de acceso]: indica qué acceso utilizamos para manipular el fichero. Vamos a considerar únicamente ficheros secuenciales, con lo que el tipo de acceso podrá ser Output (para escribir datos en ficheros, eliminando la información previa que pudiera existir), Append (para escribir datos, conservando la información previa contenida en el fichero) ó Input (para leer datos contenidos en un fichero).
+As [número de archivo]: indicará el "número de línea" que vamos a emplear para la comunicación. Estableceremos un número de línea utilizando la función FreeFile, que devuelve un tipo Integer que indica el siguiente canal disponible para usar un Open.
+Luego la palabra "As #1" indica el número de archivo que estamos utilizando. Este número lo asignamos nosotros y va desde el rango 1 al 511. El "número de archivo" se utiliza para poder diferenciar al archivo en el código. Cada archivo que se encuentra abierto no se puede asignar un número de archivo igual, ya que nos daría un error en tiempo de ejecución.
+Por ejemplo no podríamos hacer esto:
+Open "archivo1.txt" For Input As #1
+Open "otroarchivo1.txt" For Input As #1
+
+
+Close: da lugar al cierre del fichero ya que el número de archivo o línea de comunicación quede libre para una posterior ocasión.
+
+Manipular los datos
+
+Ahora tenemos que ver cómo manipulamos los datos. Para ello nos valemos de las instrucciones Write# y Input#. Existen distintas variantes para el uso de estas instrucciones. Vamos a considerar únicamente el caso de escritura y extracción de una variable por línea. La sintaxis que emplearemos será:
+
+a)	Para escribir en el fichero:
+
+Write #[Número de archivo], [Dato a escribir]
+
+El dato a escribir puede ser un texto entrecomillado, un valor numérico o una variable numérica o tipo texto.
+ b)    Para extraer datos del fichero:
+Input #[Número de archivo], [Nombre de variable] 
+El nombre de variable ha de corresponder a una variable tipo texto o tipo numérico que habremos declarado previamente. Es ideal saber qué tipo de dato contiene el fichero para hacer una extracción usando una variable adecuada. Si no dispusiéramos de esta información podríamos usar variables	 tipo Variant, pero no es lo más deseable.
+Control Timer – Temporizador
+El control Timer es un temporizador que nos permite ejecutar instrucciones de código, rutinas, funciones etc..., cada cierto intervalo de tiempo.
+Este control es invisible en tiempo de ejecución, esto quiere decir que no tiene interfaz gráfica, solo es visible cuando lo agregamos a un formulario y estamos en modo de diseño .
+La propiedad mas importante de este control es la propiedad Interval 
+Definición del propiedad Interval: 
+Devuelve o establece el número de milisegundos entre dos llamadas al evento Timer de un control Timer.
+en castellano, esto quiere decir que la propiedad es la que determina el intervalo en el que ejecutará las instrucciones que estén en el evento llamado Timer, que es el único evento que posee el control
+Por ejemplo, si agregás un Timer al formulario y le haces DobleClick sobre el mismo, al abrirse la ventana de código Visual Basic creará una rutina de evento 
+Private Sub Timer1_Timer()
+End Sub
+En ese procedimiento (controlador de evento) es donde debemos escribir las instrucciones que queremos que se ejecuten cada cierto intervalo de tiempo.
+Antes de hacer un ejemplo, hay que aclarar que la propiedad Interval está expresada en milisegundos, esto quiere decir que por ejemplo si quisieramos ejecutar una instrucción cada 3 segundos por decir un ejemplo, la propiedad Interval debe estar en 3000, si quisiera ejecutarla cada 10 segundos en 10000 etc...
+Otra cosa importante es que si la propiedad Interval se encuentra en 0, el procedimiento Timer no se producirá.
+La función “String$(<c>,<x>)” existente en VB 6.0 que permitía construir una cadena de caracteres a partir de la cadena “c” repetida “x” veces. Por otro lado, la función “StrReverse(<c>)” permitía dar la vuelta a una cadena de caracteres, nunca llegue a entender muy bien su sentido, pero ahí estaba en VB 6.0.
+
+GetSystemDirectory
+Para obtener el directorio de sistema se utiliza la función Api GetSystemDirectory, para recuperar el path de Windows GetWindowsDirectory.
+A las dos funciones se les envía en el primer parámetro un buffer de caracteres que retorna el path. Las funciones retornan la cantidad de caracteres de la ruta.
+Dim buf As String
+    Dim ret As Long
+    '
+    ' Obtener el directorio de windows
+    buf = String$(260, Chr$(0))
+    ret = GetWindowsDirectory(buf, Len(buf))
+    Text1.Text = Left$(buf, ret)
+    '
+    ' Obtener el directorio de System
+    buf = String$(260, Chr$(0))
+    ret = GetSystemDirectory(buf, Len(buf))
+    Text2.Text = Left$(buf, ret)
+El símbolo $  
+Function Left(String, Length As Long) 
+Function Left$(String As String, Length As Long) As String 
+
+Ambas son Miembros de VBA.Strings y ambas devuelven un número especificado de caracteres del lado izquierdo de una cadena, pero como puedes ver estas indicando que la funcion te va a devolver un valor de tipo string, es decir, cadena. 
+
+Funciona también para varias otras funciones, como el Mid, Lcase, Rigth,etc... 
+
+En pocas palabras, cuando agregas el caracter $ le indicas a la función (en este caso Left)que va a devolver un valor de tipo String
+Variables con el símbolo $ al final, se consideran variables de Entorno y su ámbito es durante la ejecución del programa donde son asignadas, estas no se declaran sino que sirven para almacenar valores, al final del programa su contenido es encerado o reseteado
+FUNCION Dir
+Entre otras cosas sirve para saber si existe una carpeta, si existe un archivo, si existe un archivo dentro de una carpeta,si existe una ruta.......... 
+un ejemplo para saber si existe una carpeta: 
+cuando buscas directorios se pone vbDirectory, cuando son archivos se pone vbArchive, cuando buscas archivos ocultos se pone vbHidden, normalmente si no existe la ruta, dir nos devuelve un valor vacio, entonces en el ejemplo decimos, que si la ruta dada es distinto de "" osea que no esta vacio es que la ruta existe.
+Ejemplo : 
+MyFile = Dir("C:\WINDOWS\WIN.INI")
+' retornaría "WIN.INI" si existe.
+
+App.path
+el App.Path te devuelve la ruta a la carpeta donde se encuentra el archivo ejecutable de la aplicación. 
+Ejemplo. 
+
+C:\Users\Yoselin\Documents\4to Semestre\Visual Basic\Usuarios\programa.exe
+el App.path te daría 
+C:\Users\Yoselin\Documents\4to Semestre\Visual Basic\Usuarios
+InStr
+Devuelve un entero que especifica la posición inicial de la primera aparición de una cadena dentro de otra
+Parámetros 
+Start: Opcional. Expresión numérica que establece la posición inicial para cada búsqueda. Si se omite, la búsqueda comienza en la primera posición del carácter. El índice de inicio está basado en 1.
+String1: Requerido. Expresión String en la que se busca.
+String2: Requerido. Expresión String que se busca.
+Compare: Opcional. Especifica el tipo de comparación entre cadenas. Si se omite Compare, el valor Option Compare determinará el tipo de comparación. 
+DateDiff
+Devuelve un valor Long que especifica el número de intervalos de tiempo entre dos valores Date
+Servicios Web
+•	Los servicios Web son componentes de la aplicación
+•	Los servicios Web se comunican mediante protocolos abiertos
+•	Los servicios Web son autónomos y auto-descripción
+•	Los servicios web pueden ser descubiertos utilizando UDDI
+•	Los servicios web pueden ser utilizados por otras aplicaciones
+•	HTTP y XML es la base para los servicios Web
+•	Servicios Web utilizan XML para codificar y decodificar los datos, y SOAP para transportarlo (usando protocolos abiertos).
+•	Con los servicios Web que puede intercambiar datos entre diferentes aplicaciones y plataformas diferentes
+WSDL
+•	WSDL significa Lenguaje de Descripción de Servicios Web
+•	WSDL es un lenguaje basado en XML para describir servicios Web.
+•	WSDL es una recomendación del W3C
+SOAP
+•	SOAP siglas de Simple Object Access Protocol
+•	SOAP es un protocolo basado en XML para acceder a servicios web.
+•	SOAP se basa en XML
+•	SOAP es una recomendación del W3C
+UDDI
+•	UDDI significa universal Descripción, Descubrimiento e Integración
+•	UDDI es un servicio de directorio en el que las empresas pueden buscar servicios Web.
+•	UDDI se describe en WSDL
+•	UDDI se comunica a través de SOAP
+ASP
+ASP.NET es un framework de desarrollo para la creación de páginas web y sitios web con HTML, CSS, JavaScript y secuencias de comandos del servidor.
+ASP.NET es compatible con tres modelos diferentes de desarrollo: Páginas Web, MVC (Modelo Vista Controlador) y Web Forms:
+•	ASP significa A ctive S erver P ages
+•	ASP es una tecnología de Microsoft 
+•	ASP es un programa que se ejecuta dentro de IIS 
+•	IIS significa I nternet I nformación S ervicios 
+•	IIS viene como un componente libre con Windows 2000 
+•	IIS es también una parte del Windows NT 4.0 Option Pack 
+•	El Option Pack se puede descargar desde Microsoft 
+•	PWS es un pequeño - pero completamente funcional - versión de IIS 
+•	PWS se puede encontrar en el CD de Windows 95/98 
+¿Qué es un archivo ASP?
+•	Un archivo ASP es lo mismo que un archivo HTML 
+•	Un archivo ASP puede contener texto, HTML, XML, y scripts 
+•	Scripts en un archivo ASP se ejecutan en el servidor 
+•	Un archivo ASP tiene la extensión ".asp" 
+¿Cómo difiere la ASP del HTML?
+•	Cuando un navegador solicita un archivo HTML, el servidor devuelve el archivo 
+•	Cuando un navegador solicita un archivo ASP, IIS pasa la petición al motor ASP. El motor ASP lee el archivo ASP, línea por línea, y ejecuta las secuencias de comandos en el archivo. Por último, el archivo ASP se devuelve al navegador como HTML plano
+IIS - Internet Information Server
+IIS es un conjunto de servicios basados en Internet para los servidores creados por Microsoft para su uso con Microsoft Windows.
+
+Puede utilizar varios lenguajes de script en ASP. Sin embargo, el lenguaje de secuencias de comandos predeterminado es VBScript:
+Uso de JavaScript en ASP 
+Para establecer JavaScript como lenguaje de scripts por defecto para una página en particular debe insertar una especificación del lenguaje en la parte superior de la página:
+<%@ language="javascript"%>
+Diferencias entre VBScript y JavaScript
+Al llamar a un VBScript o un procedimiento de JavaScript de un archivo ASP escrito en VBScript, puede utilizar la palabra clave "call" seguido por el nombre del procedimiento. Si un procedimiento requiere parámetros, la lista de parámetros debe escribirse entre paréntesis, al utilizar la palabra clave "call". Si se omite la palabra clave "call", la lista de parámetros no debe ir entre paréntesis. Si el procedimiento no tiene parámetros, los paréntesis son opcionales.
+Al llamar a un JavaScript o un procedimiento de VBScript desde un archivo ASP escrito en JavaScript, utilice siempre paréntesis después del nombre del procedimiento.
+ASP Formularios y Entrada de usuario
+Los comandos Request.QueryString y Request.Form se utilizan para recuperar la entrada del usuario a partir de formularios.
+Request.QueryString
+El comando Request.QueryString se utiliza para recoger los valores de un formulario con method = "get".
+La información enviada desde un formulario con el método GET es visible para todo el mundo (que se muestra en la barra de direcciones del navegador) y tiene límites en la cantidad de información a enviar.
+Si un usuario ha escrito "Bill" y "puertas" en el formulario HTML anterior, la URL se envía al servidor se vería así:
+http://www.w3schools.com/simpleform.asp?fname=Bill&lname=Gates
+Request.Form 
+El comando Request.Form se utiliza para recoger los valores de un formulario con method = "post".
+La información enviada desde un formulario con el método POST es invisible para los demás y no tiene límites en la cantidad de información a enviar.
+Si un usuario ha escrito "Bill" y "puertas" en el formulario HTML anterior, la URL se envía al servidor se vería así: 
+http://www.w3schools.com/simpleform.asp
+Validación de formulario
+La entrada del usuario debe ser validado en el navegador siempre que sea posible (por scripts de cliente). Validación de navegador es más rápido y reduce la carga del servidor.
+Usted debe considerar la validación del servidor si se insertará la entrada del usuario en una base de datos. Una buena forma de validar un formulario en el servidor es publicar el formulario para sí mismo, en vez de saltar a una página diferente. El usuario será a continuación, obtener los mensajes de error en la misma página que la forma. Esto hace que sea más fácil de descubrir el error.
+Eventos en Global.asa
+En Global.asa puedes decirle a la aplicación y la sesión de objetos lo que hay que hacer cuando las aplicaciones / inicio de la sesión y qué hacer cuando finaliza la aplicación / sesión. El código de este se coloca en los controladores de eventos. El archivo Global.asa puede contener cuatro tipos de eventos:
+Application_OnStart - Se produce cuando el primer usuario llama a la primera página de una aplicación ASP. Este evento se produce después de que el servidor Web se reinicia o después que se edita el archivo Global.asa. El evento "Session_OnStart" se produce inmediatamente después de este evento. 
+Session_OnStart - Este evento se produce cada vez que un nuevo usuario solicita su primera página de la aplicación ASP.
+Session_OnEnd - Este evento se produce cada vez que un usuario termina una sesión. Un usuario-sesión termina después de una página no ha sido solicitado por el usuario durante un tiempo determinado (por defecto es de 20 minutos).
+Application_OnEnd - Este evento se produce después de que el usuario ÚLTIMA ha terminado la sesión. Normalmente, este evento se produce cuando se detiene un servidor Web. Este procedimiento se utiliza para limpiar los ajustes después que se detiene la aplicación, al igual que los registros de borrado o escribir información en archivos de texto.
+ASP Envío de correo electrónico con CDOSYS
+CDO (Collaboration Data Objects) es una tecnología de Microsoft que está diseñado para simplificar la creación de aplicaciones de mensajería.
+CDOSYS es un componente integrado en ASP. Le mostraremos cómo utilizar este componente para enviar e-mail con ASP.
+Envío de un texto de e-mail:
+<%
+Set myMail=CreateObject("CDO.Message")
+myMail.Subject="Sending email with CDO"
+myMail.From="mymail@mydomain.com"
+myMail.To="someone@somedomain.com"
+myMail.TextBody="This is a message."
+myMail.Send
+set myMail=nothing
+%>
+Envío de un texto de correo electrónico con un archivo adjunto:
+<%
+Set myMail=CreateObject("CDO.Message")
+myMail.Subject="Sending email with CDO"
+myMail.From="mymail@mydomain.com"
+myMail.To="someone@somedomain.com"
+myMail.TextBody="This is a message."
+myMail.AddAttachment "c:\mydocuments\test.txt"
+myMail.Send
+set myMail=nothing
+%>
+
+ASP.NET
+Con ASP clásico es imposible separar el código ejecutable del propio HTML. Esto hace que la página difícil de leer, y difícil de mantener.
+Los controles de servidor son las etiquetas que puedan ser entendidos por el servidor.
+Hay tres tipos de controles de servidor:
+•	Controles de servidor HTML - etiquetas HTML tradicionales 
+•	Controles de servidor Web - Nuevas etiquetas ASP.NET 
+•	Controles de servidor de validación - Para la validación de entrada 
+Controles de servidor HTML - ASP.NET
+Controles de servidor HTML son etiquetas HTML entendidos por el servidor.
+Elementos HTML en los archivos de ASP.NET , por defecto son tratados como texto. Para que estos elementos sean programables, añadir un atributo runat = "server" al elemento HTML. Este atributo indica que el elemento debe ser tratado como un control de servidor. Se añade el atributo id para identificar el control de servidor. La referencia id puede ser usado para manipular el control de servidor en tiempo de ejecución.
+Nota: Todos los controles de servidor HTML deben estar dentro de una etiqueta <form> con el atributo runat = "server". El atributo runat = "server" indica que la forma debe ser procesado en el servidor. También indica que los controles cerrados puede acceder a los scripts del servidor.
+ASP.NET - Controles de servidor Web
+Controles de servidor Web son etiquetas ASP.NET especiales entendidos por el servidor.
+Al igual que los controles de servidor HTML, controles de servidor Web también se crean en el servidor y que requieren un atributo runat = "server" para trabajar. Sin embargo, los controles de servidor Web no se asignan necesariamente a cualquier elemento HTML existentes y que pueden representar elementos más complejos.
+La sintaxis para crear un control de servidor Web es:
+<asp:control_name id="some_id" runat="server" />
+<asp:Button id="button1" Text="Click me!" runat="server" OnClick="submit"/>
+
+Controles de validación de servidor - ASP.NET
+Controles de servidor de validación se utilizan para validar la entrada de usuario. Si la entrada del usuario no pasa la validación, se mostrará un mensaje de error al usuario.
+Cada control de validación lleva a cabo un tipo específico de validación (como la validación contra un valor específico o un rango de valores).
+El evento Page_Load
+El evento Page_Load es uno de muchos eventos que entiende ASP.NET. El evento Page_Load se desencadena cuando una página se carga, y ASP.NET llamará automáticamente la subrutina Page_Load, y ejecutar el código en su interior:
+
+•	Lo importante es indicar a las clases controladoras que son ManagedBean colocando la anotación @ManagedBean arriba de la declaración de la clase.
+
+ANGULAR
+El ejemplo consta de dos ficheros: 
+•	index.html
+•	script.js
+  
+
+•	Línea 2: La primera cosa que nos encontramos es un atributo desconocido llamado ng-app. Este nuevo atributo se llama en angular una directiva y durante todo el curso veremos muchas directivas que existen en angular. El valor de la directiva (o el valor del atributo) es app. El valor que le demos es indiferente ya que simplemente hace referencia al nombre de nuestra aplicación. Realmente no hace referencia al nombre de la aplicación sino al módulo principal de nuestra aplicación. Pero ya veremos más adelante que es un módulo.
+•	Línea 5:Carga la librería de angular. La hemos cargado directamente desde los servidores de google pero no hay problema en descargarla y tenerla en nuestro propio proyecto.
+•	Línea 9 incluye la directiva de angular ng-controller. Esta directiva tiene el valor de PruebaController. Este es el nombre de una función JavaScript que deberemos crear. Con ésto le decimos a angular que ejecute la función PruebaController cuando se muestre el html. A esa función en angular la llamamos controlador, y por ello el método de llama “PruebaController”. Durante todo el curso a las funciones JavaScript que sean controladores las llamaremos con el sufijo “Controller”.
+•	Línea 10: Tenemos dentro del tag <h1> el valor {{ mensaje }}. Esta es realmente la parte interesante del ejemplo. Lo que estamos diciendo aquí es que se muestre el valor de la variable de JavaScript mensaje dentro del tag <h1>. Mirad lo sencillo que es ahora mostrar información desde JavaScript en HTML. Sólo tenemos que incluir entre llaves {{ }} el nombre de nuestra variable. Realmente no es tan bonito como cualquier variable de JS sino sólo los valores que están dentro de una variable especial de angular. Ahora mismo explicamos ésto al ver el JavaScript.
+ 
+
+	
+•	Línea 1: Llamamos al método angular.module. Este método nos permite crear módulos en angular 1) y el nuevo módulo se asigna a la variable app que por ahora no vamos a usarlo. El nombre de nuestro módulo es app. Este nombre debe ser el mismo que el que pusimos en el atributo ng-app en el index.html. Como segundo parámetro le estamos pasando un array vacio. Por ahora recuerda que es obligatorio pasar el array al crear un nuevo módulo.
+•	Línea 3: Es la función con el controlador de Angular. Lo raro es que le pasamos un argumento llamado $scope. Lo primero es que no debe confundirnos el signo del dolar $. Angular usa mucho el dolar $ para indicar que son cosas propias suyas pero realmente a nivel de JavaScript es simplemente una carácter más de la propia variable.
+
+
+El $scope es LA VARIABLE de Angular donde debemos guardar toda la información de JavaScript de nuestra página. Ya no vamos a crear nuevas variable de la forma: var i=5;  sino que ahora deberemos hacer siempre: $scope.i=5
+¿Por qué hacer ésto? Porque angular sólo muestra la información en el HTML mediante {{ }} de aquellas propiedades del $scope y no de cualquier variable de JavaScript. 
+Ahora podríamos preguntarnos el porqué de esa limitación de obligarnos a usar el $scope. El motivo es porque angular hace magia con el $scope. Lo impresionante es que si posteriormente hacemos alguna modificación en el $scope, angular la detectará y volverá a modificar el HTML automáticamente 3).Así que angular está monitorizando el $scope para ver si cambia algo y de esa forma actualizar el HTML. Pero lo que no podría es monitorizar todas las variables de JavaScript , así que si queremos que se enlacen el mundo de javaScript y el de HTML deberemos usar el $scope
+
+databinding
+El Data-binding es el concepto mas importante de angular y lo que hace es relacionar el HTML con nuestro modelo de datos. Es lo que acabamos de ver de poner las {{ }} en el HTML y que se transforme con los datos del JavaScript 
+ 
+•	Modelo: Son las variables JavaScript con las información (modelo) que queremos mostrar en la página HTML
+•	Plantilla: es la página HTML que escribimos nosotros. Se llama plantilla ya que lo que escribimos no es realmente lo que se muestra ya que no queremos mostrar por ejemplo las llaves {{ }}
+•	HTML : El el resultado de modificar la plantilla con los datos del modelo. Es lo que finalmente ve el usuario.
+Resumen
+•	En cada aplicación hay que:
+o	Indicar el nombre del módulo principal con la directiva ng-app. Ej: ng-app=“app”. 
+o	Desde JavaScript debemos crear el módulo mediante angular.module. Ej: var app=angular.module('app',[]);
+•	Los controladores son donde está el código JS de nuestra aplicación.
+o	Se especifican mediante la directiva ng-controller. Ej: ng-controller=“PruebaController”.
+o	Se definen creando una función JavaScript que acepta como parámetro la variable $scope. Ej: function PruebaController($scope) {}
+•	Las propiedades del $scope se muestran en el HTML mediante llaves {{ }}. Ej: <h1> {{ mensaje }} </h1>
+
+2.2 Eventos
+Hemos visto cómo indicando un mensaje en el $scope podemos mostrarlo fácilmente en el HTML mediante {{ }}. Pero la gracia de angular es que si modificamos el mensaje se actualiza automáticamente el HTML. Para poder cambiar el mensaje debemos incluir una nueva directiva  llamada ng-click que permite ejecutar una función JavaScript al pulsar sobre un elemento HTML. 
+
+ 
+•	Línea 11: Está la nueva directiva ng-click que permite especificar una función JavaScript que se ejecutará al pulsar sobre el elemento. El método a ejecutar es cambiarMensaje(). 
+Desgraciadamente el método no puede ser una simple función JavaScript llamada cambiarMensaje. Al igual que ocurre con las variables que deben estar en el $Scope, la función cambiarMensaje tambien deberá ser una función definida en el $scope.
+ 
+Lineas 6-8: Vemos cómo hemos definido una nueva propiedad llamada cambiarMensaje cuyo valor es una función anónima en JavaScript y que no tiene parámetros. El cuerpo de la función es simplemente cambiar el texto de la propiedad mensaje al nuevo valor “Adios mundo cruel “
+Otros eventos
+Al igual que ng-click existen otras directivas de tratamiento de eventos: 
+•	ng-dblclick:Cuando se produce el evento doble click.
+•	ng-blur:Cuando se produce el evento blug.
+•	ng-change:Cuando se cambia el tag <input> o select> pero no cuando se cambia a consecuencias del propio modelo.
+•	ng-cut:Cuando se produce el evento cut.
+Eventos de teclado
+•	ng-keydown:Cuando se produce el evento keydown.
+•	ng-keyup:Cuando se produce el evento keyup.
+•	ng-keypress:Cuando se produce el evento keypress.
+Eventos de ratón
+•	ng-mousedown:Cuando se produce el evento mousedown
+•	ng-mouseenter:Cuando se produce el evento mouseenter
+•	ng-mouseleave:Cuando se produce el evento mouseleave
+•	ng-mousemove:Cuando se produce el evento mousemove
+•	ng-mouseover:Cuando se produce el evento mouseover
+•	ng-mouseup:Cuando se produce el evento mouseup
+
+
+2.3 Entrada de datos
+ 
+Linea 13: Lo único que hemos añadido es un <input> pero con la directiva de angular ng-model. Esta directiva indica qué variable del $scope está asociado a este <input>. Si ejecutas el ejemplo verás cómo al escribir texto en el <input> automáticamente se modifica el texto del título <h1> en la página HTML. También prueba a pulsar en el botón “Cambia” y mira lo que ocurre
+El fichero script.js no lo hemos modificado nada. Al ejemplo anterior
+El precio
+Por ahora son todo ventajas pero como todo en la vida todo tiene un precio. ¿Cuál es el precio por sincronizar automáticamente el modelo y el HTML? 
+Antes de responder a la pregunta hay que ver cómo hace AngularJS esta sincronización. Lo que hace angular es antes de cualquier evento en angular (por ejemplo un ng-click) guardarse el estado del $scope y cuando acaba el evento comprueba que se ha modificado del $scope respecto a su copia original. De esa forma sabe que tiene que actualizar. 
+Pero éso tiene 2 inconvenientes, que son el precio a pagar: 
+•	Rendimiento: AngularJS tiene problemas de rendimiento y en ciertos caso son tablas excesivamente largas. Éso suele darse en el típico scroll sin fin en el que vamos añadiendo datos a la página.
+•	Eventos externos a AngularJS: Si se produce un evento fuera de Angular, él no se enterará y no se actualizará nada. Éso nos obliga a que todo lo que ocurra en AngularJS tiene que pasar por él. El problema es que algunas cosas de jQuery dejarán de funcionar a no ser que le digamos a AngularJS que ha ocurrido algo.
+Para ambos problemas realmente hay solución. Lo único es que cuando tengamos que resolverlos se perderá parte de la sencillez de AngularJS , pero como se decía antes: “Nadie da duros a 4 pesetas”. 
+2.4 Formulario
+En AngularJS hay un dicho que dice: “Si el valor de tu directiva ng-model no incluye un punto es que está mal.” 
+¿Qué quiere decir éso? Que nunca pongas propiedades con valores directamente en el $scope sino que crees un objeto con las propiedades que necesites y asignes dicho objeto al $scope 
+¿Por qué necesitamos hacer éso? El motivo es que Angular en ciertas directivas creará nuevos scopes que heredarán de tu $scope y si pones las propiedades directamente en el $scope fallarán en ciertos casos y te costará descubrir qué ha pasado. 
+En el ejemplo anterior todos las propiedades de la directiva ng-model empiezan por “seguro.”, es decir, que siempre llevan un “punto”, por lo que es correcto. 
+Lo que estaría mal sería haber hecho: $scope.nif="";
+2.5 Directiva ng-disabled
+La directiva ng-disabled nos permite habilitar o deshabilitar un elemento de entrada de datos como un <input> un <select> o un <button>. 
+Lo importante de la directiva es que habilita o deshabilita el elemento en función de cualquier valor del $scope y por lo tanto de nuestro modelo. 
+Este campo sólo tiene sentido que esté habilitado cuando el usuario ha marcado que tiene alguna alergia, así que vamos a hacer que sólo esté habilitado el <input> del nombre de la alergia cuando el valor $scope.seguro.enfermedades.alergia valga true. Es decir que si marcamos que tenemos alergia , entonces se habilitará el nombre de la alergia y si no marcamos que tenemos alergia se deshabilitará el campo del nombre de la alergia. 
+
+ 
+Línea 33: Se puede ver que hemos incluido la directiva ng-disabled. Su valor es la expresión en JavaScript seguro.enfermedades.alergia===false. En caso de que la anterior expresión sea verdadera se deshabilitará el <input>
+Expresión de la directiva
+Hemos visto en el ejemplo anterior que en ng-disabled se ha usado la expresión seguro.enfermedades.alergia===false. Pero, ¿qué se puede poner realmente como valor del atributo?. La respuesta sencilla es que se puede poner cualquier expresión JavaScript pero se evaluará referida al $scope. La respuesta un poco más complicada es que realmente no es JavaScript sino un subconjunto de él. Es AngularJS el que se encarga de interpretar las expresiones por lo que no podremos usar cualquier expresión de JavaScript sino sólo aquello que haya implementado AngularJS en su intérprete de las expresiones. 
+2.8 Modulos
+Crear un módulo
+Podemos crear un módulo llamado “AA” mediante la siguiente línea: 
+angular.module("AA",[]);
+Obtener un módulo
+Para obtener una referencia a un módulo ya creado usaremos la siguiente línea: 
+var moduloAA=angular.module("AA");	
+Controladores
+Por ahora hemos visto que crear un controlador es simplemente crear una función JavaScript con el nombre de dicho controlador. Esta no es una forma adecuada de crear un controlador, lo correcto es añadir el controlador al módulo de nuestra aplicación. 
+
+var app=angular.module("app",[]);
+app.controller("PruebaController",function($scope) { 
+$scope.mensaje="Hola Mundo";});
+El método controller acepta dos parámetros, el primero es el nombre del controlador y el segundo la función con el código JavaScript del controlador.
+A partir de la versión 1.3 de AngularJS no funcionarán los controladores que no estén dentro de un módulo.
+Directivas
+Hemos visto algunas directivas en AngularJS pero nosotros podemos crear nuestras propias directivas, para ello deberemos usar el método directive del módulo. 
+app.directive('mapa', function() { });
+¿Qué es un servicio?
+Es un objeto JavaScript que nos permite obtener información. Aparentemente nada nuevo que entender, sería por ejemplo un DAO en Java o un servicios de Java. Lo importante de ésto es que un servicio nunca interacciona con la propia página, sólo con otros servicios o con un servidor de datos que pueda estar en otro Host. 
+Ejemplos de servicios serían: 
+•	El servicio $http de AngularJS. Este servicio hace la típica llamada AJAX a un servidor para obtener información de él. Como vemos, cumple perfectamente la definición de obtener información. 
+•	Un servicio que se conecta a un host que nos retorna el valor del Euribor.
+•	Un posible servicio de cálculo de Hipoteca que dados los datos de una hipoteca (Importe del préstamo, años, diferencial ,etc) nos calculara cuánto hay que pagar mensualmente.
+•	Un servicio que nos hiciera las operaciones de CRUD sobre el servidor.
+•	Un servicio que transformara los String con una fecha en un objeto Date.
+•	El servicio $log de Angular que nos permite generar un log de nuestra aplicación.
+Minimizando el JavaScript
+En vez de pasar la función , pasamos un array en el que los n primeros elementos son Strings con el nombre de los servicios a inyectar y el último parámetro del array será la propia función. 
+Veamos ahora cómo debería ser nuestro código: 
+app.controller("SeguroController",['$scope','$log',function($scope,$log) {}]);
+Vemos cómo se pasa un array con 3 elementos. El primero de ellos es un String con el texto $scope , el segundo parámetro es otro String con el texto $log y el tercer parámetro es la propia función. 
+Nótese que ahora hay que cerrar el corchete del array al acabar la función 
+Si ahora minimizáramos el código quedaría de la siguiente forma: 
+app.controller("SeguroController",['$scope','$log',function(a,b) { }]);
+Los parámetros al minimizarlos se llaman a y b. Pero ahora éso no es un problema para angular porque él sabe que el primer parámetro corresponde a $scope ya que es el texto del primer elemento del array y el segundo parámetro corresponde al servicio $log ya que es el texto del segundo elemento del array. 
+
+
+JSF
+
+faces-config.xml  
+El control para las reglas de navegación, contenido en el fichero 
+faces-config.xml, donde por ejemplo, se indica que estando index.jsp, si ocurre una acción denominada login, navegaremos a la página hola.jsp, esta acción comentada, es un string que se declara en la vista como un atributo del botón de aceptar que aparece en el formulario del ejemplo básico. El fichero faces-config sería el siguiente: 
+
+<navigation-rule> 	
+<from-view-id>/index.jsp</from-view-id> 
+<navigation-case>	
+ <from-outcome>login</from-outcome> 
+ <to-view-id>/hola.jsp</to-view-id> 
+</navigation-case> 
+</navigation-rule> 
+y la parte de la vista que establece la acción que activa la navegación es: <h:commandButton value="Aceptar" action="login"/>
+web.xml
+Por último, termina de definirse el controlador de la aplicación con el servlet faces, definido en el fichero web.xml: 
+<web-app> 
+<servlet> 
+<servlet-name>Faces Servlet</servlet-name> 
+<servlet-class>javax.faces.webapp.FacesServlet</servlet-class> 
+<load-on-startup>1</load-on-startup> 
+</servlet> 
+<servlet-mapping> 
+<servlet-name>Faces Servlet</servlet-name> 
+<url-pattern>*.faces</url-pattern> 
+</servlet-mapping> 
+<welcome-file-list> 
+<welcome-file>index.html</welcome-file> 
+</welcome-file-list> 
+</web-app> 
+Con la directiva < servlet > se establece el único servlet de nuestra aplicación es el propio del framework JSF.
+La directiva <servlet-mapping> indica la ruta (url) para acceder a servlet definido anteriormente. Cualquier página JSP que pretendamos visualizar, si contiene la extensión .faces, se visualizará a traves de JSF. 
+Por último con <welcome-file-list> se establece como página de arranque de la aplicación index.html. Posteriormente, esta página se redirecciona a index.faces, esto se hace así para que el framework JSF, a través de su servlet principal tome el control. Si no se hiciera de esta manera, el servidor de aplicaciones mostraría una simple página JSP como tal, y la compilación de dicha página, fuera del marco JSF, provocaría errores
+
+•	Una aplicación JSF requiere un servlet, llamado FacesServlet, el cual actual como  controlador.
+•	Lo importante aquí es el mapeo del servlet. Todas las páginas JSF son procesadas por un servlet especial que forma parte del código de implementación de JSF. Para asegurarnos de que el servlet está correctamente activado cuando una pagina JSF es demandada, la URL posee un formato especial. En nuestra configuración, es el formato .faces. Por ejemplo, en su navegador no se puede poner simplemente : http://localhost:8080/login/index.jsp sino que la dirección ha de ser: http://localhost:8080/login/index.faces El contenedor servlet usa la regla del mapeado servlet para activar el servlet JSF, quien elimina el sufijo faces y carga la pagina index.jsp 
+•	Esto se hace así para que el framework JSF, a través de su servlet principal tome el control. Si no se hiciera de esta manera, el servidor de aplicaciones mostraría una simple página JSP como tal, y la compilación de dicha página, fuera del marco JSF, provocaría errores.
+Archivo properties
+Cuando se implementa una aplicación web, es una buena idea coleccionar todas las 
+cadenas de mensajes en un mismo sitio. Este proceso da facilidades para conservar mensajes consistentes y cruciales, y facilita las traducciones a otros idiomas. 
+JSF simplifica este proceso mediante los ficheros de propiedades. Primero, hay que aglutinar todos los literales de tip String en un archivo de extensión .properties: 
+saludo=¡Bienvenido a JSF! pregunta=Escoja un número, por favor. despedida=Que tenga un buen día. 
+Luego se guarda este fichero junto a los ficheros de clases .java, por ejemplo en: 
+WEB-INF/classes/mensajes.properties aunque puede elegirse cualquier ruta y nombre de archivo, siempre que sea de extensión .properties. 
+A continuación se añade la etiqueta f:loadBundle a tu pagina JSF, tal que así: <f:loadBundle basename="mensajes" var="msjs"/> 
+Y por último se puede usar una expresión de valor directo para acceder a la cadena del mensaje: <h:outputText value="#{msjs.saludo}"/>
+Ámbitos de los beans
+Ámbito de tipo petición 
+Es el de vida más corta. Empieza cuando una petición HTTP comienza a tramitarse y 
+acaba cuando la respuesta se envía al cliente.
+Por ejemplo, la siguiente línea de código: 
+
+<f:loadBundle basename="mensajes" var="msjs"/> 
+
+La etiqueta f:loadBundle hace que la variable bundle solo exista mientras dura la petición. Un objeto debe tener un ámbito de este tipo sólo si lo que se quiere es reenviarlo a otra fase de procesado.
+Ámbito de tipo sesión
+Los contenedores servlet amplían el protocolo de HTTP para seguir la pista a una sesión, esto se consigue repitiendo conexiones para el mismo cliente. Hay diversos métodos para el rastreo de sesión . El método más simple es usar cookies: La pareja nombre /valor la envía el servidor a un cliente, esperando que regresen en subsiguientes peticiones.
+La sesión de rastreo con cookies es completamente transparente al desarrollador web, y las etiquetas estándar JSF automáticamente reescriben URL si un cliente no usa cookies. 
+El ámbito de sesión permanece desde que la sesión es establecida hasta que esta termina. Una sesión termina si la aplicación web invoca el método invalidate en el objeto HttpSession o si su tiempo expira. 
+
+Las aplicaciones Web típicamente colocan la mayor parte de sus bean dentro de un ámbito de sesión. Por ejemplo, un bean UsuarioBean puede contener información acerca de usuarios que son accesibles a lo largo de la sesión entera. Un bean CarritoCompraBean puede irse llenando gradualmente durante las demandas que levantan una sesión.
+Ámbito de tipo aplicación 
+Persiste durante toda la aplicación web. Este ámbito compartido entre todas las 
+peticiones y sesiones.
+Configuración de un bean a través de XML 
+El archivo de configuración más comúnmente usado es WEB-INF/faces-config.xml. 
+Esta configuración comprende las características básicas del propio bean, y los valores que se pueden establecer para los atributos del bean, ya sean valores simples, o diversos valores para un mismo atributo del bean. 
+Un bean se define con una etiqueta managed-bean al comienzo del fichero faces-config.xml. Básicamente se debe especificar nombre del bean con la etiqueta <managed-bean-name>, clase donde está recogida dicho bean, con la etiqueta <managed-bean-class> y ámbito del bean con la etiqueta <managed-bean-scope>, por ejemplo, para definir un bean llamado usuario, que está en la clase UsuarioBean y con un ámbito de sesión, sería: 
+<managed-bean> 
+<managed-bean-name>usuario</managed-bean-name> 
+<managed-bean-class>UsuarioBean</managed-bean-class> 
+<managed-bean-scope>session</managed-bean-scope> 
+</managed-bean>
+El ámbito puede ser de sesión, de aplicación, de petición o ninguno (session, application, request, o none).
+Navegación 
+Las aplicaciones JavaServer Faces usan las reglas de navegación para controlar las navegación entre páginas. Cada regla de navegación especifica cómo ir de una página a las demás dentro de la aplicación. En la arquitectura MVC, la navegación de la página es una de las responsabilidades del controlador. Las reglas de navegación de las aplicaciones JSF están contenidas en el archivo faces-config.xml bajo el directorio WEB-INF.
+Navegación estática
+En una aplicación web simple, la navegación es estática. Es decir, pulsar sobre un botón suele redirigir al navegador a una misma página para dar la respuesta. En este caso, simplemente, a cada botón se le da un valor para su atributo de acción (action), por ejemplo:
+<h:commandButton label="Aceptar" action="login"/> 
+Esta acción desencadenante, debe concordar con la etiqueta outcome del fichero 
+faces-config.xml, dentro de sus reglas de navegación. 
+
+En esta simple regla de navegación, se indica que tras la acción login, se navegará a la página hola.jsp, si esta acción ocurre dentro de la página index.jsp. 
+Tenga cuidado con no olvidar la /, en la lineas from-view-id y to-view-id Puede mezclar reglas de navegación con el mismo from-view-id, por ejemplo: 
+
+<navigation-rule> 
+<from-view-id>/index.jsp</from-view-id> 
+<navigation-case> 
+<from-outcome>login</from-outcome> 
+<to-view-id>/hola.jsp</to-view-id> 
+</navigation-case> 
+<navigation-case> 
+<from-outcome>signup</from-outcome> 
+<to-view-id>/adios.jsp</to-view-id> 
+</navigation-case> 
+</navigation-rule>
+
+Navegación dinámica
+En la mayoría de aplicaciones web, la navegación no es estática. El flujo de la página no depende de qué botón se pulsa, sino que también depende de los datos que el cliente introduce en un formulario. Por ejemplo, una página de entrada al sistema puede tener dos resultados: El éxito o el fracaso. por ejemplo: 
+<h:commandButton label="Aceptar" action="#{loginControlador.verificarUsuario}"/> 
+
+En este caso, loginControlador, referencia un bean, y éste debe tener un método denominado verificarUsuario. 
+
+Un método de referencia, en un atributo de acción, no tiene parámetros de entrada y devuelve una cadena de caracteres, que será una usada para activar una regla de navegación, por ejemplo, el método verificarUsuario debería parecerse a algo así: 
+El método devuelve un String, "éxito" o "fracaso". El manejador de navegación usa el string devuelto para buscar una regla de navegación que haga juego. 
+De manera que en las reglas de navegación, podría encontrarse algo así: 
+
+<navigation-case> 
+<from-outcome>exito</from-outcome>
+<to-view-id>/exito.jsp</to-view-id> 
+</navigation-case> 
+<navigation-case> 
+<from-outcome>fracaso</from-outcome> 
+<to-view-id>/fracaso.jsp</to-view-id> 
+</navigation-case>
+
+
+EJB
+Un EJB (Enterprise Java Bean) es un componente que debe ejecutarse de un contenedor de EJBs y se diferencia bastante de un JavaBean normal. Un JavaBean es un objeto Java al cual accedemos de forma directa desde nuestro programa, un EJB es un componente al cual no podemos acceder de una forma tan directa y siempre accedemos a traves de algún tipo de intermediario
+Los EJB de sessión disponen de dos proxies (intermediarios) a  traves de los cuales accedemos a ellos .
+•	Proxy Local : Es el intermediario que nos permite un acceso al EJB desde la misma maquina virtual.
+•	Proxy Remoto :Es el intermediario que nos permite el acceso al EJB desde una maquina virtual remota.
+Estos proxies son los encargados de dar acceso al EJB a todos los servicios adicionales que soporta el EJB Container como son Transaccionalidad,Seguridad etc.Para construir un EJB de Sessión deberemos definir los interfaces de acceso local y remoto  en los cuales los proxies se apoyarán.
