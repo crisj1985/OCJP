@@ -1,0 +1,208 @@
+------------------------------------------27/01/2014--------------------------------------------
+
+el metodo adormecer ejecuta el codigo dependiendo del tipo de objeto al que apunta su argumento
+un metodo abstracto no tiene implementacion y  un metodo abstracto debe estar en una clase abstracta
+las clases abstractas no se instancian(ERROR DE COMPILACION)
+la clase que herede de una clase abstracta es obligatorio sobreescribir los metodos abstractos
+una INTERFACE tiene solo metodos abstractos
+Al implementar una INTERFACE en una clase todos sus metodos deben ser obligatoriamente implementados 
+Si la clase no implementa todos los metodos de una INTERFACE la clase deber ser declarada como abstracta
+Los metodos no implemtados de una INTERFACE permancen como abstractas en la clase que implemento la INTERFACE
+Una clase java si puede implementar varias INTERFACES
+Una INTERFACE no puede implementar otra INTERFACES
+Una INTERFACE puede heredar de otra u otras INTERFACES
+Una clase puede herederar de otra clase e implementar una o varias INTERFACES al mismo tiempo
+No existe herencia multiple a nivel de clases pero si en INTERFACES
+un metodo abstracto no puede tener implementacion
+THROWABLE de papa de --- >> EXCEPTION, ERROR
+Si hay como heredar de THROWABLE \
+
+------------------------------------------28/01/2014--------------------------------------------
+MODIFICADOTRES
+PRIVATE - DEFAULT - PROTECTED - PUBLIC(orden de restriccion descendente)
+Nunca los modificadores de metodos de clases PADRES pueden volver a sus METODOS hijos mas restricitivos
+Pero pueden ser menos restrictivos
+En una interface si no le coloca algun tipo de modificador por defecto SIEMPRE es public 
+si se puede hacer casting a un valor null
+------------------------------------------02/02/2015--------------------------------------------
+EXCEPCIONES
+Ssi el codigo entra al TRY tambien entrara al FINALLY
+SI hay como tener una sentencia TRY - FINALLY sin CATCH
+El programa se CAE si en TRY se produce una EXCEPCION y no hay CATCH para tratarla
+En java existen las Excepciones CHECKED (obliga a tratar Excepcion o propagarla con throws) y UNCHECKED(no exige nada) 
+Si hay como propagar o tratar una Excepcion en un MAIN(pero esta mal no tratarla antes de la capa mas externa)
+Si se lanza en el codigo una Excepcion del tipo CHECKED tambien hay que propagarla o tratarla
+solo las hijas de RUNTIME EXCEPTION son UNCHECKED
+EXCEPTION es CHECKED
+SI existen varios bloques catch deben declarse primero los hijos luego los padres
+En compílacion las Excepciones UNCHECKED no se analiza
+Si se lanza una Excepcion y alguno de los bloques catch lo atrapa ya no entrara en ninguno de los bloques catch restantes
+Si quiero crear Excepciones tengo que heredar de algun tipo de Excepcion 
+En herencia, si los metodos de clases hijas propagan Execpciones CHECKED verifico que las Excepciones del padre propagen la misma excepcion o una de mayor jerarquia
+Si la clase hija propaga una excepcion de tipo CHECKED el padre debe propagar la misma excepcion o de mayor jerarquia
+En herencia, si la clase hijo no lanza ninguna o propaga una excepcion UNCHECKED compila, aunque el padre propague Excepciones
+
+------------------------------------------03/02/2015--------------------------------------------
+CONSTRUCTORES
+
+El constructor si no tiene modificador por defecto es default
+En herencia en el constrcutor por defecto de la clase hija tambien llama a super osea al  constructor por defecto del padre
+con super llama al constructor por defecto del padre
+con this en un constructor llama a otro constructor de esa clase
+En un constructor la primera linea ejecutable debe ir this(""); o super();
+Si en un constructor estan en las dos primeras lineas this(""); y super(); no compíla
+En una clase los bloques de inicializacion se ejecuta antes que los constructores
+
+OPERADORES LOGICOS:
+|| &&: valida solo el primer operando para el resultado, el segundo ya no lo toma en cuenta
+| &: valida los dos operandos
+++a preincremento la variable ya adquiere un valor mas
+a++ postincremento la variable aumenta un valor a la siguiente vez que es utilizada
+
+
+los metodos estaticos estan en la clase y ya no en los objetos
+por lo tano lo invoco metodos directamente desde la clase, sin NEW
+Desde un metodo estatico no se puede usar atributos o metodos no estaticos-->> error de compilacion
+Resuelvo esto con una referencia a un objeto especifico, llamando a los atributos o metodos no estaticos
+los bloques estaticos se crean una solo vez y antes de los no estaticos y constructores 
+
+COLECCIONES
+
+En una LIsta sus valores se recuperan de acuerdo como fueron ingresados
+EN una LIsta trabaja por indices con el metodo nombreLista.get(indice)
+En una lista admite repetidos, NULL, su implementaciones son Arraylist
+El SET 	no trabaja por indices y no admite repeTidos
+-- En un HashSet no tiene un orden especifico de recuperacion de valores
+-- En un LinkedHashSet sus valores se recuperan de acuerdo como fueron ingresados y no admite repetidos
+-- En un TreeSet recupera en orden natural del tipo datos orden alfabetico en caso de String, no permite ingresar null
+-- El orden de recuperacion de TreeSet con tipo de valor String es caracteres especiales, numeros, mayusculas, minisculas
+-- En un TreeSet no permite añadir NULL en ejecucion
+Los MAPAS es un tipo de coleccion TIPO - VALOR  (ESTRUCUTURA DE DATOS)
+--En la coleccion HashMap no tiene un orden especifico de recuperacion de valores
+--En HashMap permite que la clave sea null, si se repitiera la clave su valor toma el ultimo asignado
+--Para busqueda con Map es mas eficiente que con arreglos
+--En un LinkedHashMap sus valores se recuperan de acuerdo a como fueron ingresados
+--En un TreeMap recupera en orden alfabetico(orden natural del tipo datos), no admite NULL
+
+
+ENUMERACIONES
+
+Un varible declarada como final se convierte en un constante
+En una INTERFACE los atributos son public static y final (constantes), colocandole como tal o no
+Un ENUM realiza lo mismo que una constante ademas restringue rangos de valores
+Los atributos de un ENUM son tipos de datos miembro del ENUM
+Un ENUM es otra estructura de datos
+Los cada miembro del ENUM tiene un ordinal(asignado dependiendo de como fue declarado espezando desde el 0) y un NAME el nombre declarado
+A un ENUM puede declarse sus propios atributos
+En un ENUM el punto y coma es opcional
+luego de declara una linea con ; ya es obligatorio declarar todas las lines con ;
+El contructor del ENUM por defecto es PRIVATE implicitamente
+Por defecto los miembros del ENUM llaman implicitamente al constructor vacio del ENUM
+Si el contructor del ENUM ES DECLARADO explicitamente con parametros sus miembros deben llamar a ese constructor
+El posible declara metodo de acceso solo para un miebro del ENUM
+Los ENUM pueden ser declarados dentro o fuera de la clase
+--Si el ENUM es declarado dentro de una clase y quiere ser accedido dentro de otra clase antepongo el nombre de la clase donde fue declarado el ENUM
+
+CLASE INNER
+
+EN una clase java puede contener otra clase java (clase inner), una clase declarada dentro de otra
+Dentro de la clase externa puedo crear obejtos de la clase declarada en su interior
+Puedo declarar una clase dentro del metodo de otra clase, siempre sin modificador de acceso y solo la puedo instanciar dentro de ese metodo
+Solo los atributos de instancia pueden tener modificadores de acceso
+Una CLASE ANONIMA se declara como una clase que herede de la clase de la que intento crear objetos:
+ClaseA ca=new ClaseA()
+		{//esta clase es ANONIMA QUE HEREDA DE ClaseA y sobreescribo el metodo1 de ClaseA
+			public void metodo1(){
+				System.out.println("MCA"); 
+			}
+			public void metodo2(){
+				System.out.println("MDA");
+			}
+		}; 
+		ca.metodo1();
+En una Interface puedo hacer lo mismo pero al declarar una clase ANONIMA en una interface en esa CALSE ANONIMA debo implementar los metodos de esa interface
+
+Interface InterfaceA {
+	void metodo1();		
+	}
+	InterfaceA IA = new InterfaceA()
+	{//esta clase anonima deber implementar los metodos de la InterfaceA
+	void metodo1();		//en este caso debe ser implemantado con public y no como default
+	}
+----------------------- GENERICOS ----------------------------------
+	Los genericos pueden declararse en la definicion de la clase o interface
+	En metodos es posible declarar genericos  antes del tipo de retorno del metodo
+	En asigancion los arrays 
+Una lista de un tipo solo se puede asignar a una lista del mismo tipo
+No hay polimorfismo en la asiganacion de genericos
+
+-------------------------------------------- THREADS ---------------------------------------------------------
+
+El metodo start de Thread solo se puede ejecutar una vez si se manda 2 veces da un error en ejecucion
+sleep y wait de thread lanzan excepciones checked
+Al envolver en un try cartch o propagar la excepcion que lanza wait compila pero lanza una excepcion en ejecucion para resolver esto, se envuele EL WAIT en un contexto synchronized
+El metodo notify no lanza excepcion checked pero lanza una excepcion en ejecucion para resolver esto, se envuele en un contexto synchronized
+Para salir del metodo wait :  el hilo de ejecucion termine, que el tiempo maximo de espera termine o con un metodo notify
+el notify se manda solo a un hilo que esta en espera
+NotifyAll termina la espera de todos los hilos que esperan su ejecucion
+Un estatico mal declarado compila pero en ejcucion realiza Clase.Metodo
+Con Run() -->> ejecuto en el mismo hilo
+Con Start() -->> ejecuto en un nuevo hilo
+
+----------------------------------------------PRIMITIVOS ----------------------------------------------------
+para el char no tiene wrapper
+int vs Interger (positivos, negativos,0, NULL)
+Un wrapper es una clase, envuelve el valor de un primitivo
+Integer su valor por defecto es null, ya que es clase
+Integer z=3; //al ser Integer una clase internamente realiza z=new Integer (3); z sigue siendo una referencia
+	int x=0;
+	Integer z=3; //al se una clase internamente realiza z=new Integer (3); z sigue siendo una referencia
+	x=z;//internamente realiza z.intValue() como z es Integer llama a su metodo intValue para sacar su valor decimal
+		Integer w = null;
+		if(w>10)//da NullPointerException ya que w intenta obetener su valor decimal por medio de intValue() pero w es null
+Number es superclase de Long Integer y Float		
+Los tipos primitivos se convierten en un tipo del mismo primitivo, un primitivo superior, en su wrapper, en una superclase de su wrapper
+Un Wrapper se convierten/busca para la sobrecarga un Wrapper del mismo tipo, en un wrapper superior,en primitivo del mismo tipo, un primitivo superior de su primitivo, 
+------------------------------------------VARARGS------------------------------------------
+varargs son 0 o varios elementos (primitivos o clases)
+Intenamente un varargs es un arreglo
+SOlo debe haber un parametro de tipo varargs y si existe deber ser el ultimo
+
+-------------------------------------------- VARIOS --------------------------------------------
+A nivel de clase los modificadores son public o default
+Si una clase es final la clase no puede ser heredada
+Una clase no puede ser al mismo tiempo final y abstract
+No puede ser sobreescrito pero si puede ser heredado es decir invocado a las subclases
+Una metodo
+ no puede ser al mismo tiempo final y abstract
+ Cuando se declara final a un atributo de clase este debe ser inicializado ya que por definicion un atributo no puede ser modificado
+ Un atributo de clase declarado como final deber inicializado en su delcaracion, en un bloque de inicilizacion o en el constructor de la clase
+ UN atributo declarado en una interfaz es por defecto final es decir una constante
+ En la declaracion de un parametro establecido final en un metodo este no puede cambiar
+	Si el parametro es del tipo primitivo el valor no puede cambiar
+	Si el parametro es de tipo referencia este no puede dejar de apuntar al mismo objeto pero el objeto(atributos) si puede cambiar en la implementacion de ese metodo
+	
+---------------------------------------------- ASERCIONES 	----------------------------------------------
+Se habilitan o desahibilitan en ejecucion
+lanza un AssercioError si las aserciones estan habilitadas y la condicion realizada es false
+Por defecto todas las aserciones estan desahilitadas
+Para hablitar las aserciones:
+	java -ea
+Para desahablitar las aserciones:
+	java -da
+En la version de java 1.3 assert no existia
+----------------------------------------------	COMPILACION Y EJECUCION POR CMD ----------------------------------------------
+En compilacion ejecuto en el directorio de proyecto javac ruta\Clase.java, el path debe ir con =>> \
+En ejecucion se debe validar el directorio de la declaracion del paquete para ejecutar la clase
+Por ejemplo:
+package com.test;
+tomar toda la ruta del paquete para ejecutar java com.test.Clase ó java com/test/Clase 
+
+---------------------------------------------- IMPORT DE ESTATICOS ----------------------------------------------
+Al importar paquetes o librerias con static debo acceder hasta los miembros estaticos 
+
+Las referencias nunca se comparan con == sino con equals
+Si al comparar dos referencias con == para que sea true deben apuntar al mismo objeto
+Si es menor de 127 lso valores asigandos a referecnias las dos referencias apuntas al mismo valor es decir reutlizan el mismo valor para las dos referencias
+
+
