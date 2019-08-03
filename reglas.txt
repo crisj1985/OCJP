@@ -1,4 +1,4 @@
-------------------------------------------27/01/2014--------------------------------------------
+
 /**********************************************************************************************/
 /*******************************	General		***************************************/
 /**********************************************************************************************/
@@ -43,14 +43,14 @@ El modificador transient es aplicable solo a las variables de instancia.
 El modificador volatile es aplicable solo a las variables de instancia.
 Es legal declarar una variable local con el mismo nombre que una variable de instancia, esto se llama “Shadowing”.
 
-------------------------------------------28/01/2014--------------------------------------------
+/*************************************************************************************************************/
 MODIFICADOTRES
 PRIVATE - DEFAULT - PROTECTED - PUBLIC(orden de restriccion descendente)
 Nunca los modificadores de metodos de clases PADRES pueden volver a sus METODOS hijos mas restricitivos
 Pero pueden ser menos restrictivos
 En una interface si no le coloca algun tipo de modificador por defecto SIEMPRE es public 
 si se puede hacer casting a un valor null
-------------------------------------------02/02/2015--------------------------------------------
+/***********************************************************************************************************/
 EXCEPCIONES
 Ssi el codigo entra al TRY tambien entrara al FINALLY
 SI hay como tener una sentencia TRY - FINALLY sin CATCH
@@ -68,7 +68,7 @@ En herencia, si los metodos de clases hijas propagan Execpciones CHECKED verific
 Si la clase hija propaga una excepcion de tipo CHECKED el padre debe propagar la misma excepcion o de mayor jerarquia
 En herencia, si la clase hijo no lanza ninguna o propaga una excepcion UNCHECKED compila, aunque el padre propague Excepciones
 
-------------------------------------------03/02/2015--------------------------------------------
+/*******************************************************************************************************************/
 CONSTRUCTORES
 
 El constructor si no tiene modificador por defecto es default
