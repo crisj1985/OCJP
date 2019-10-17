@@ -1,0 +1,5 @@
+GIT
+instalar git para widows
+establecer variables de entorno del sistema en path:
+C:\Program Files\Git\bin\
+C:\Program Files\Git\cmd\
