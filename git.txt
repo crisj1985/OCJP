@@ -1,0 +1,9 @@
+Crear branch de proyectos y subirlos a gitHub con Git
+nos ubicamos en el directorio que esta el proyecto
+ejecutamos git init para crear el repositorio
+Anadimos todo el proyecto(s) con git add .
+creamos un nuevo branch con git checkout -b nombrebranch
+damos commit: git commit
+creamos un nuevo repositrio en GitHub
+creamos el repositorio remoto con git remote add origin https://github.com/crisj1985/Proyectos.git
+lanzamos a gtHub con: git push origin nombreBranch
